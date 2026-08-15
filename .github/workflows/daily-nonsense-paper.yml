@@ -3,7 +3,7 @@ name: Geneious Paper Engine(Polished)
 on:
   schedule:
     # 毎日UTC 0:00 (日本時間 午前9時) に実行
-    - cron: '0 0 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch: # 手動で実行ボタンを押せるようにする
 
 jobs:
