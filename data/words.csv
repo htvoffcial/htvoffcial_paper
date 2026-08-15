@@ -582,3 +582,100 @@ ritual,N
 hygiene,N
 public zone,N
 distance,N
+domain,N
+organization,N
+government,N
+government agency,N
+name server,N
+signing key,N
+registration,N
+connection,N
+trustworthy domain,N
+attribute jp,N
+subdomain,N
+apex,N
+redundancy,N
+gTLD,N
+cloud,N
+support,N
+postal address,N
+IMSI,N
+telecommunications number,N
+carrier,N
+MVNE,N
+MVNO,N
+MNO,N
+PLMN,N
+eUICC chip,N
+GSMA certificate,N
+LEO satellite,N
+VoNR,N
+router,N
+data communication,N
+voice call,N
+emergency call,N
+illegal radio station,N
+global IPv6 address,N
+APNIC,N
+shared IP,N
+CGNAT,N
+PA address,N
+home router,N
+portable power supply,N
+0ABJ number,N
+IMEI lock,N
+fire alarm system,N
+extinguishing equipment,N
+Diet building,N
+press club,N
+Diet member,N
+helium bus,N
+non-flammable bus,N
+Markov chain,N
+transformer,N
+self-attention,N
+recording,N
+transcription,N
+model,N
+price plan,N
+satellite direct,N
+NTN standard,N
+shareholder meeting,N
+shareholder benefit,N
+SIM card,N
+DDoS battle,N
+resale,N
+flea market platform,N
+network restriction,N
+airport,N
+security checkpoint,N
+X-ray inspection,N
+mobile battery,N
+prohibit,V
+allocate,V
+launch,V
+apologize,V
+lend,V
+bundle,V
+restrict,V
+implement,V
+publish,V
+resonate,V
+record,V
+transcribe,V
+learn,V
+announce,V
+proceed,V
+illegal,A
+portable,A
+sustainable,A
+gigantic,A
+fair,A
+malicious,A
+strategic,A
+exclusive,A
+nationwide,A
+automatically,ADV
+exclusively,ADV
+permanently,ADV
+physically,ADV
