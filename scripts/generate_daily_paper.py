@@ -16,7 +16,7 @@ TEMPLATES = [
     "As a result , N V A N in the N ."
 ]
 
-STATE_FILE = "state.json"
+STATE_FILE = "data/state.json"
 README_FILE = "README.md"
 
 def load_words(csv_path):
@@ -40,7 +40,7 @@ def generate_sentence(words_dict):
     return sentence_tokens
 
 def main():
-    words_dict = load_words("words.csv")
+    words_dict = load_words("data/words.csv")
     
     # 未出力の単語バッファを読み込む
     buffer = []
