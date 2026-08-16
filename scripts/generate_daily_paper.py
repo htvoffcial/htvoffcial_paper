@@ -1143,8 +1143,8 @@ def main():
                 # 2. 段落区切り（現在の段落が 3〜5文 に達したら改段落）
                 elif sentences_in_current_para >= random.randint(3, 5):
                     
-                    # 3.40%の確率で箇条書きコーナーを挿入
-                    if random.random() < 0.40:
+                    # 3. 20%の確率でか条書き追加
+                    if random.random() < 0.20:
                         readme_content += "\n\n"
                         bullet_count = random.randint(3, 5) # 箇条書きの数も3〜5個にばらけさせる
                         for _ in range(bullet_count):
