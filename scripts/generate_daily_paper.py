@@ -464,10 +464,78 @@ TEMPLATES = [
     "A promising direction for future research is to examine N .",
     "Future research could extend the present analysis by considering N .",
     "Additional research is needed to establish the generalizability of these findings .",
+
+    # --- 追加: 図表の説明・参照 ---
+    "Figure N illustrates the relationship between N and N .",
+    "Table N summarizes the descriptive statistics for N .",
+    "As can be seen in Figure N , there is a clear trend toward A N .",
+    "The data in Table N reveal that N V ADV .",
+    "Figure N provides a schematic representation of N .",
+    "A closer inspection of Table N shows that N V N .",
+
+    # --- 追加: 手法の正当化・選択理由 ---
+    "The rationale for using N is that N V N .",
+    "N was chosen because it allows for A N .",
+    "One of the main advantages of N is that it V N .",
+    "The primary benefit of this N is its ability to V N .",
+    "This approach is particularly useful when N is A .",
+    "We opted for A N in order to minimize A N .",
+
+    # --- 追加: 新規性・独自性の強調 ---
+    "To the authors' knowledge , this is the first N to systematically V N .",
+    "A key strength of the present N is its use of A N .",
+    "This N provides a novel perspective on the complex interplay between N and N .",
+    "Our approach offers several distinct advantages over traditional N .",
+    "This N represents a significant step forward in understanding N .",
+
+    # --- 追加: データ前処理・クリーニング ---
+    "Outliers were V from the N to ensure A N .",
+    "Missing values were imputed using a A N method .",
+    "The raw data were transformed to V a normal N .",
+    "To reduce noise , the A N was filtered using N .",
+    "Data were aggregated at the A level to facilitate N .",
+
+    # --- 追加: 矛盾する先行研究の整理 ---
+    "While some researchers argue that N V N , others claim that N V N .",
+    "The debate over N has produced highly contradictory findings .",
+    "Attempts to resolve this contradiction have largely relied on A N .",
+    "These conflicting results may be due to differences in A N .",
+
+    # --- 追加: 研究範囲と除外 (Scope & Exclusions) ---
+    "The scope of this N is limited to A N .",
+    "This N does not attempt to V N .",
+    "Issues related to N are beyond the scope of this N .",
+    "We restrict our focus to N , leaving N for future research .",
+    "It is not the purpose of this N to V N .",
+
+    # --- 追加: 政策・実務への含意 (Policy & Practical Implications) ---
+    "Policymakers should consider N when designing A N .",
+    "These findings highlight the need for targeted N in N .",
+    "The implementation of N could significantly V A N .",
+    "Practitioners can utilize these findings to V A N .",
+    "The successful adoption of N relies heavily on A N .",
+
+    # --- 追加: 謝辞・資金提供 (Acknowledgments & Funding) ---
+    "This N was supported by a grant from N .",
+    "We thank N for their helpful comments on earlier drafts of this N .",
+    "Financial support for this N was provided by N .",
+    "The authors gratefully acknowledge the assistance of N in V-ing N .",
+    "N declare that they have no competing financial interests ."
 ]
 
 STATE_FILE = "data/state.json"
 README_FILE = "README.md"
+
+# 論文らしい小見出しのリスト
+SECTIONS = [
+    "## Introduction",
+    "## Literature Review",
+    "## Methodology",
+    "## Results",
+    "## Discussion",
+    "## Conclusion",
+    "## Future Work"
+]
 
 def load_words(csv_path):
     words = {'N': [], 'V': [], 'A': [], 'ADV': []}
@@ -479,6 +547,7 @@ def load_words(csv_path):
     return words
 
 def generate_sentence(words_dict):
+    # TEMPLATESは既存のものを使用
     template = random.choice(TEMPLATES)
     tokens = template.split()
     sentence_tokens = []
@@ -490,19 +559,17 @@ def generate_sentence(words_dict):
     return sentence_tokens
 
 def main():
+    # --- 省略: words_dictの読み込みとバッファの補充 ---
     words_dict = load_words("data/words.csv")
     
-    # 未出力の単語バッファを読み込む
     buffer = []
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, 'r') as f:
             buffer = json.load(f)
             
-    # バッファが10単語未満なら、新しい文を生成して補充する
     while len(buffer) < 10:
         buffer.extend(generate_sentence(words_dict))
         
-    # 今日の出力分として10単語を取り出す
     output_tokens = buffer[:10]
     buffer = buffer[10:]
     
@@ -513,17 +580,42 @@ def main():
     else:
         readme_content = "# Abstract\n\n"
 
-    # READMEに単語を追記（ピリオドなどの前の不要なスペースを処理）
+    # 現在の文数（ピリオドの数）をカウント
+    sentence_count = readme_content.count('.')
+
+    # READMEに単語を追記
     for token in output_tokens:
         if token in [".", ",", ";", ":"]:
-            readme_content = readme_content.rstrip() + token + " "
+            # 記号の前のスペースを削除して結合
+            readme_content = readme_content.rstrip() + token
+            
+            # ピリオド（文末）の場合の処理
+            if token == ".":
+                sentence_count += 1
+                
+                # 例: 10文ごとに小見出しを挿入
+                if sentence_count % 10 == 0:
+                    # インデックスがSECTIONSの長さを超えないように調整
+                    section_idx = (sentence_count // 10) % len(SECTIONS)
+                    readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
+                
+                # 例: 3文ごとに段落を分ける（小見出しが入るタイミング以外）
+                elif sentence_count % 3 == 0:
+                    readme_content += "\n\n"
+                
+                # 通常の文と文の間
+                else:
+                    readme_content += " "
+            else:
+                # , や ; の後は通常のスペース
+                readme_content += " "
         else:
+            # 通常の単語
             readme_content += token + " "
             
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(readme_content)
         
-    # 残りのバッファを保存して翌日に引き継ぐ
     with open(STATE_FILE, "w") as f:
         json.dump(buffer, f)
 
