@@ -25,4 +25,4 @@ We controlled for brand in all analyses. The findings indicate a significant ass
 
 ## Results
 
-Section network discusses the implications 
+Section network discusses the implications of the findings. The existing literature has yet to 
