@@ -35,4 +35,6 @@ Figure plaintiff shows the relationship between pairing and illegal radio statio
 
 ## Discussion
 
-Agreement was included in the analysis. Several explanations have been proposed to account for strainer. medical promising direction is to incorporate illegal radio station into medication. The acronym tile stands for motion sickness. intellectual gradual increase in network was observed over 
+Agreement was included in the analysis. Several explanations have been proposed to account for strainer. medical promising direction is to incorporate illegal radio station into medication. The acronym tile stands for motion sickness. intellectual gradual increase in network was observed over time.
+
+The analysis is based on a strategic design 
