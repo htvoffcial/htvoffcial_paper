@@ -1163,7 +1163,7 @@ def main():
                     rand_action = random.random()
                     
                     # 9%の確率で「箇条書き」を生成
-                    if rand_action < 0.09
+                    if rand_action < 0.09:
                         readme_content += "\n\n"
                         bullet_count = random.randint(3, 5)
                         for _ in range(bullet_count):
