@@ -1162,8 +1162,8 @@ def main():
                 elif sentences_in_current_para >= random.randint(3, 5):
                     rand_action = random.random()
                     
-                    # 30%の確率で「箇条書き」を生成
-                    if rand_action < 0.30:
+                    # 9%の確率で「箇条書き」を生成
+                    if rand_action < 0.09
                         readme_content += "\n\n"
                         bullet_count = random.randint(3, 5)
                         for _ in range(bullet_count):
