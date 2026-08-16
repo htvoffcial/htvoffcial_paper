@@ -1063,10 +1063,11 @@ TEMPLATES = [
     "The average score on N was N .",
 ]
 
+
 STATE_FILE = "data/state.json"
 README_FILE = "README.md"
 
-# 論文らしい小見出しのリスト
+# 論文らしい大見出しのリスト
 SECTIONS = [
     "## Introduction",
     "## Literature Review",
@@ -1077,8 +1078,20 @@ SECTIONS = [
     "## Future Work"
 ]
 
+# テンプレート例（実際の環境に合わせて調整してください）
+TEMPLATES = [
+    "The A N V ADV .",
+    "A N V the N .",
+    "ADV , the N V .",
+    "This N V that A N is A ."
+]
+
 def load_words(csv_path):
     words = {'N': [], 'V': [], 'A': [], 'ADV': []}
+    if not os.path.exists(csv_path):
+        print(f"Warning: {csv_path} not found. Using dummy data.")
+        return {'N': ['system', 'model', 'data'], 'V': ['analyzes', 'processes'], 'A': ['novel', 'robust'], 'ADV': ['rapidly', 'accurately']}
+        
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -1087,16 +1100,24 @@ def load_words(csv_path):
     return words
 
 def generate_sentence(words_dict):
-    # TEMPLATESは既存のものを使用
     template = random.choice(TEMPLATES)
     tokens = template.split()
     sentence_tokens = []
     for token in tokens:
-        if token in words_dict:
+        if token in words_dict and words_dict[token]:
             sentence_tokens.append(random.choice(words_dict[token]))
         else:
             sentence_tokens.append(token)
     return sentence_tokens
+
+def generate_subsection_title(words_dict):
+    """
+    words.csvの単語を使って、論文らしいサブセクションを生成する
+    例: ### Robust Model
+    """
+    adj = random.choice(words_dict['A']).capitalize() if words_dict['A'] else "Advanced"
+    noun = random.choice(words_dict['N']).capitalize() if words_dict['N'] else "Method"
+    return f"### {adj} {noun}"
 
 def main():
     words_dict = load_words("data/words.csv")
@@ -1106,11 +1127,12 @@ def main():
         with open(STATE_FILE, 'r') as f:
             buffer = json.load(f)
             
-    while len(buffer) < 10:
+    # 一度に生成する文の量を増やして、内容を素早く濃くする
+    while len(buffer) < 50:
         buffer.extend(generate_sentence(words_dict))
         
-    output_tokens = buffer[:10]
-    buffer = buffer[10:]
+    output_tokens = buffer[:50]
+    buffer = buffer[50:]
     
     # READMEを読み込む（なければ新規作成）
     if os.path.exists(README_FILE):
@@ -1119,8 +1141,8 @@ def main():
     else:
         readme_content = "# Abstract\n\n"
 
-    # 全体の文数（セクションの切り替え用）
     total_sentence_count = readme_content.count('.')
+    capitalize_next = True # 文頭の単語を大文字にするためのフラグ
 
     for token in output_tokens:
         if token in [".", ",", ";", ":"]:
@@ -1130,48 +1152,54 @@ def main():
             # ピリオド（文末）の場合の処理
             if token == ".":
                 total_sentence_count += 1
+                capitalize_next = True # 次の単語は大文字にする
                 
-                # 現在の段落（最後の \n\n 以降）に含まれる文の数を計算
+                # 現在の段落に含まれる文の数を計算
                 last_paragraph = readme_content.split("\n\n")[-1]
                 sentences_in_current_para = last_paragraph.count('.')
                 
-                # 1. セクション区切り（例: 24文ごと）
+                # 1. 大セクション区切り（24文ごと）
                 if total_sentence_count > 0 and total_sentence_count % 24 == 0:
                     section_idx = (total_sentence_count // 24) % len(SECTIONS)
                     readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
                 
-                # 2. 段落区切り（現在の段落が 3〜5文 に達したら改段落）
+                # 2. 段落の区切り（3〜5文に達したらアクションを起こす）
                 elif sentences_in_current_para >= random.randint(3, 5):
+                    rand_action = random.random()
                     
-                    # 3. 20%の確率でか条書き追加
-                    if random.random() < 0.20:
+                    # 30%の確率で「箇条書き」を生成
+                    if rand_action < 0.30:
                         readme_content += "\n\n"
-                        bullet_count = random.randint(3, 5) # 箇条書きの数も3〜5個にばらけさせる
+                        bullet_count = random.randint(3, 5)
                         for _ in range(bullet_count):
-                            # その場で箇条書き用の文を生成
                             bullet_tokens = generate_sentence(words_dict)
-                            # 記号周りの余分なスペースを消して文字列化
                             bullet_text = " ".join(bullet_tokens).replace(" ,", ",").replace(" .", ".")
-                            # 箇条書きの先頭を大文字にする
                             readme_content += f"- {bullet_text.capitalize()}\n"
                         readme_content += "\n"
                         
+                    # 20%の確率で「サブセクション」を生やす
+                    elif rand_action < 0.50:
+                        readme_content += f"\n\n{generate_subsection_title(words_dict)}\n\n"
+                        
+                    # それ以外は通常の段落区切り
                     else:
-                        # 通常の段落区切り
                         readme_content += "\n\n"
-                else:
-                    # 通常の文と文の間
-                    readme_content += " "
+            else:
+                # コンマなどの後は通常のスペース
+                readme_content += " "
         else:
-            # 段落の先頭やセクションタイトルの直後の場合、先頭を大文字にする
-            if readme_content.endswith("\n\n"):
+            # 単語の追加
+            if capitalize_next:
                 readme_content += token.capitalize() + " "
+                capitalize_next = False
             else:
                 readme_content += token + " "
-            
+                
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(readme_content)
         
+    # dataディレクトリがない場合のエラー防止
+    os.makedirs(os.path.dirname(STATE_FILE) or ".", exist_ok=True)
     with open(STATE_FILE, "w") as f:
         json.dump(buffer, f)
 
