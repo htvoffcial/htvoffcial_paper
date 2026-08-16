@@ -1154,8 +1154,8 @@ def main():
                 sentences_in_current_para = last_paragraph.count('.')
                 
                 # 1. 大セクション区切り（24文ごと）
-                if total_sentence_count > 0 and total_sentence_count % 24 == 0:
-                    section_idx = (total_sentence_count // 24) % len(SECTIONS)
+                if total_sentence_count > 0 and total_sentence_count % 700 == 0:
+                    section_idx = (total_sentence_count // 700) % len(SECTIONS)
                     readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
                 
                 # 2. 段落の区切り（3〜5文に達したらアクションを起こす）
