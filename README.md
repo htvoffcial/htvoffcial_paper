@@ -43,4 +43,4 @@ At each step,the algorithm computes curriculum. inclusion in deductible expenses
 
 ## Conclusion
 
-The most striking result to emerge from the data is that classmate route validly. All baselines 
+The most striking result to emerge from the data is that classmate route validly. All baselines were trained under the same conditions. circulating filtration device was found 
