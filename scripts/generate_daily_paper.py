@@ -1099,7 +1099,6 @@ def generate_sentence(words_dict):
     return sentence_tokens
 
 def main():
-    # --- 省略: words_dictの読み込みとバッファの補充 ---
     words_dict = load_words("data/words.csv")
     
     buffer = []
@@ -1120,10 +1119,9 @@ def main():
     else:
         readme_content = "# Abstract\n\n"
 
-    # 現在の文数（ピリオドの数）をカウント
-    sentence_count = readme_content.count('.')
+    # 全体の文数（セクションの切り替え用）
+    total_sentence_count = readme_content.count('.')
 
-    # READMEに単語を追記
     for token in output_tokens:
         if token in [".", ",", ";", ":"]:
             # 記号の前のスペースを削除して結合
@@ -1131,27 +1129,45 @@ def main():
             
             # ピリオド（文末）の場合の処理
             if token == ".":
-                sentence_count += 1
+                total_sentence_count += 1
                 
-                # 例: 10文ごとに小見出しを挿入
-                if sentence_count % 10 == 0:
-                    # インデックスがSECTIONSの長さを超えないように調整
-                    section_idx = (sentence_count // 10) % len(SECTIONS)
+                # 現在の段落（最後の \n\n 以降）に含まれる文の数を計算
+                last_paragraph = readme_content.split("\n\n")[-1]
+                sentences_in_current_para = last_paragraph.count('.')
+                
+                # 1. セクション区切り（例: 12文ごと）
+                if total_sentence_count > 0 and total_sentence_count % 12 == 0:
+                    section_idx = (total_sentence_count // 12) % len(SECTIONS)
                     readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
                 
-                # 例: 3文ごとに段落を分ける（小見出しが入るタイミング以外）
-                elif sentence_count % 3 == 0:
-                    readme_content += "\n\n"
-                
-                # 通常の文と文の間
+                # 2. 段落区切り（現在の段落が 3〜5文 に達したら改段落）
+                elif sentences_in_current_para >= random.randint(3, 5):
+                    
+                    # 3. 10%の確率で箇条書きコーナーを挿入
+                    if random.random() < 0.10:
+                        readme_content += "\n\n"
+                        bullet_count = random.randint(3, 5) # 箇条書きの数も3〜5個にばらけさせる
+                        for _ in range(bullet_count):
+                            # その場で箇条書き用の文を生成
+                            bullet_tokens = generate_sentence(words_dict)
+                            # 記号周りの余分なスペースを消して文字列化
+                            bullet_text = " ".join(bullet_tokens).replace(" ,", ",").replace(" .", ".")
+                            # 箇条書きの先頭を大文字にする
+                            readme_content += f"- {bullet_text.capitalize()}\n"
+                        readme_content += "\n"
+                        
+                    else:
+                        # 通常の段落区切り
+                        readme_content += "\n\n"
                 else:
+                    # 通常の文と文の間
                     readme_content += " "
-            else:
-                # , や ; の後は通常のスペース
-                readme_content += " "
         else:
-            # 通常の単語
-            readme_content += token + " "
+            # 段落の先頭やセクションタイトルの直後の場合、先頭を大文字にする
+            if readme_content.endswith("\n\n"):
+                readme_content += token.capitalize() + " "
+            else:
+                readme_content += token + " "
             
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(readme_content)
