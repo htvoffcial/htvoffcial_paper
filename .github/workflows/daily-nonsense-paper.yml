@@ -23,8 +23,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Publishing Department"
+          git config --global user.email "w.paper@m.haruharutv.jp"
           git add README.md data/state.json
           git commit -m "docs: append 10 words to paper" || echo "No changes to commit"
           git push
