@@ -2,7 +2,7 @@ import csv
 import json
 import random
 import os
-
+from collections import defaultdict
 # 論文によくある文型テンプレート
 # N: 名詞, V: 動詞, A: 形容詞, ADV: 副詞
 
@@ -1062,7 +1062,175 @@ TEMPLATES = [
     "The incidence of N increased from N to N .",
     "The average score on N was N .",
 ]
+# --- ここから差分: 既存のTEMPLATESリストの末尾に追加 ---
+TEMPLATES += [
 
+    # --- 0. 超頻出の掴み・問題提起 (Introduction Opener) ---
+    "The role of N in N has been extensively studied in recent years.",
+    "Understanding the relationship between N and N is crucial for N.",
+    "N is a fundamental component of N.",
+    "The ability to V N is essential for A N.",
+    "Despite its importance, N remains a challenging problem in the field of N.",
+    "N has been recognized as a major bottleneck for N.",
+    "Recent advances in N have enabled the development of A N.",
+    "The emergence of N has opened up new opportunities for V-ing N.",
+    "There is an urgent need for A methods to V N.",
+    "N is characterized by A N and A N.",
+
+    # --- 1. 先行研究の批判的レビュー (Critical Review) ---
+    "However, most existing studies on N fail to consider N.",
+    "A major drawback of previous approaches is their inability to V N.",
+    "Existing methods for N suffer from A N.",
+    "The majority of prior work has overlooked the importance of N.",
+    "While N has been widely adopted, its effectiveness in A N remains questionable.",
+    "A critical limitation of N is that it does not account for N.",
+    "Previous approaches typically assume that N is A, which may not hold in practice.",
+    "Despite promising results, N is computationally expensive and difficult to scale.",
+    "The applicability of N to A N is limited by N.",
+    "Most prior work treats N as A, ignoring its A nature.",
+
+    # --- 2. 本研究の貢献・差別化 (Contribution / Novelty) ---
+    "In contrast to previous studies, this study focuses on N.",
+    "The key contribution of this work is to introduce a novel N for V-ing N.",
+    "Unlike previous methods, our approach does not require A N.",
+    "Our work provides the first comprehensive analysis of N.",
+    "We present a new perspective on N by considering N.",
+    "This paper presents a unified framework for V-ing N.",
+    "The novelty of our approach lies in its ability to V N and V N simultaneously.",
+    "Our method is distinguished by its use of A N to V N.",
+    "We propose a simple yet effective N that significantly improves N.",
+    "This study is the first to demonstrate that N can V N.",
+    "Our approach bridges the gap between A N and A N.",
+    "We introduce the concept of A N to better capture N.",
+    "A central contribution of this paper is the introduction of N.",
+    "Our work sheds new light on the role of N in N.",
+
+    # --- 3. 方法の概要・直感 (Method Overview) ---
+    "The core idea behind our approach is to V N using N.",
+    "Our method consists of two main components: N and N.",
+    "At a high level, our N works by V-ing N to V N.",
+    "The proposed N is built upon the observation that N V N.",
+    "We formulate the problem of N as a A N problem.",
+    "The key insight is that N can be V-ed as N.",
+    "Our approach leverages A N to effectively V N.",
+    "We design a novel N that explicitly models N.",
+    "The architecture of our N is illustrated in Figure N.",
+    "We decompose N into a set of A subproblems.",
+    "The intuition behind N is that A N tends to V N.",
+    "Our framework jointly learns to V N and V N.",
+
+    # --- 4. 実装・詳細・数式導入 (Implementation Details) ---
+    "We denote the set of N as N.",
+    "Let N be a A N that V N.",
+    "Formally, the objective is to minimize N with respect to N.",
+    "The loss function is composed of two terms: N and N.",
+    "We use N to represent the A N of N.",
+    "The parameter N controls the trade-off between N and N.",
+    "We initialize N with A N.",
+    "The training procedure is summarized in Algorithm N.",
+    "We adopt a A N to model the relationship between N and N.",
+    "Each N is encoded into a A representation using N.",
+    "We apply A normalization to ensure that N is A.",
+    "The final N is obtained by aggregating N across A N.",
+
+    # --- 5. 実験設定の厳密化 (Experimental Setup) ---
+    "We evaluate our method on a wide range of A benchmarks.",
+    "All experiments were conducted on N with A N.",
+    "We follow the standard evaluation protocol used in N.",
+    "For fair comparison, all N were implemented using A N.",
+    "We use N as the primary evaluation metric.",
+    "The dataset is split into N, N, and N for training, validation, and testing, respectively.",
+    "We report the average performance over N independent runs.",
+    "To ensure reproducibility, we fix the random seed to N.",
+    "We tune hyperparameters via grid search on the validation set.",
+    "The computational cost is measured in terms of N and N.",
+    "We compare against N state-of-the-art baselines, including N and N.",
+
+    # --- 6. 結果の客観的報告 (Results Reporting) ---
+    "Our method achieves state-of-the-art performance on N.",
+    "As shown in Table N, our N outperforms N by a large margin.",
+    "The proposed method yields a consistent improvement across all N.",
+    "We observe a significant improvement in N when using A N.",
+    "The performance gap between N and N widens as N increases.",
+    "Our model achieves comparable performance with significantly fewer N.",
+    "The results demonstrate the effectiveness of our approach in V-ing N.",
+    "We find that N is highly effective for V-ing N.",
+    "The benefit of N is particularly evident when N is A.",
+    "Our approach achieves a new state-of-the-art result of N on N.",
+
+    # --- 7. 詳細分析・アブレーション (Ablation / Analysis) ---
+    "To better understand the effect of N, we conduct an in-depth analysis of N.",
+    "We investigate the impact of varying N on N.",
+    "As expected, increasing N leads to A N in N.",
+    "The results suggest that N is a crucial factor for A N.",
+    "We find that removing N causes a substantial performance degradation.",
+    "Interestingly, replacing N with N has little effect on N.",
+    "The analysis reveals that A N contributes most to the overall performance.",
+    "We observe a trade-off between N and N.",
+    "The performance saturates when N exceeds N.",
+    "This confirms that our N effectively captures N.",
+    "We further break down the results by N to examine A differences.",
+
+    # --- 8. 考察・示唆・一般化 (Discussion) ---
+    "This finding is consistent with the notion that N V N.",
+    "One plausible explanation for this phenomenon is that N V N.",
+    "This suggests that N plays a more important role than previously thought.",
+    "The observed trend can be attributed to the fact that N is A.",
+    "These results imply that N should be taken into account when V-ing N.",
+    "Our findings challenge the conventional assumption that N is A.",
+    "This highlights the importance of N in achieving A N.",
+    "We attribute the success of N to its ability to V N.",
+    "This observation is in agreement with findings reported in N.",
+    "A deeper understanding of N may lead to more A N.",
+    "This indicates that N and N are complementary to each other.",
+
+    # --- 9. 限界の丁寧な言い方 (Limitations - polite) ---
+    "It is worth noting that our analysis is limited to A N.",
+    "Our current implementation does not explicitly handle N.",
+    "The effectiveness of N may depend on the quality of N.",
+    "A limitation of this study is the lack of experiments on A N.",
+    "We leave the exploration of N for future work.",
+    "Due to computational constraints, we were unable to evaluate N on A N.",
+    "Our method assumes that N is available, which may not always be the case.",
+    "The interpretation of N is subject to A N.",
+    "While our approach is effective, it may not generalize to A settings.",
+
+    # --- 10. 結論の強い言い回し・将来展望 (Conclusion / Future Work) ---
+    "In this paper, we have presented a novel approach to V-ing N.",
+    "We have shown that N can be effectively V-ed by leveraging N.",
+    "Our work opens up several avenues for future research on N.",
+    "We believe that our findings will inspire further research into N.",
+    "We hope that this work will serve as a basis for future studies on N.",
+    "A promising direction for future research is to extend N to A N.",
+    "In the future, we plan to investigate the application of N to N.",
+    "To conclude, this study demonstrates the potential of N for V-ing N.",
+    "Overall, this work provides valuable insights into N.",
+    "We envision that N will become a standard component of A N.",
+
+    # --- 11. 引用・位置づけの便利フレーズ (Citation Phrases) ---
+    "Following N, we define N as N.",
+    "Inspired by recent work on N, we propose to V N.",
+    "Our work is closely related to N, which also focuses on N.",
+    "Similar to N, we adopt a A N approach.",
+    "Building upon the work of N, we extend N to A N.",
+    "In line with N, we hypothesize that N V N.",
+    "As argued by N, N is crucial for V-ing N.",
+    "For a thorough survey of N, we refer readers to N.",
+    "The idea of V-ing N has been previously explored in N.",
+    "Our formulation generalizes that of N by incorporating N.",
+
+    # --- 12. 図表・付録への言及 (Figure / Appendix) ---
+    "We provide a detailed illustration of N in Figure N.",
+    "The overall pipeline of our approach is depicted in Figure N.",
+    "Table N presents a comparison of different N in terms of N.",
+    "The statistics of the N are summarized in Table N.",
+    "We include additional qualitative results in Appendix N.",
+    "For implementation details, please refer to Appendix N.",
+    "A detailed proof of N is provided in Appendix N.",
+    "We refer to the supplementary material for more examples of N.",
+    "An overview of the notation used in this paper is provided in Table N.",
+    "The pseudo-code for V-ing N is given in Algorithm N.",
+]
 
 STATE_FILE = "data/state.json"
 README_FILE = "README.md"
@@ -1081,16 +1249,68 @@ SECTIONS = [
 # テンプレート例（実際の環境に合わせて調整してください）
 
 
+
+def modify_word(word, form):
+    """
+    テンプレート側の指定 (ing, ed, s など) に合わせて、英単語を簡易的に活用させる
+    """
+    if not word:
+        return word
+        
+    # 小文字化して判定（出力時に大文字化されることは呼び出し元で制御）
+    lower_word = word.lower()
+    
+    if form == 'ing':
+        # 例: make -> making
+        if lower_word.endswith('e') and not lower_word.endswith(('ee', 'oe', 'ye')):
+            return word[:-1] + 'ing'
+        # 例: stop -> stopping, run -> running (短母音＋子音の簡易判定)
+        elif len(lower_word) >= 3 and lower_word[-1] not in 'aeiouwxy' and lower_word[-2] in 'aeiou' and lower_word[-3] not in 'aeiou':
+            return word + word[-1] + 'ing'
+        return word + 'ing'
+        
+    elif form == 'ed':
+        # 例: analyze -> analyzed
+        if lower_word.endswith('e'):
+            return word + 'd'
+        # 例: apply -> applied
+        elif lower_word.endswith('y') and len(lower_word) >= 2 and lower_word[-2] not in 'aeiou':
+            return word[:-1] + 'ied'
+        # 例: stop -> stopped
+        elif len(lower_word) >= 3 and lower_word[-1] not in 'aeiouwxy' and lower_word[-2] in 'aeiou' and lower_word[-3] not in 'aeiou':
+            return word + word[-1] + 'ed'
+        return word + 'ed'
+        
+    elif form in ['s', 'es']:
+        # 例: focus -> focuses, catch -> catches
+        if lower_word.endswith(('s', 'x', 'z', 'ch', 'sh', 'o')):
+            return word + 'es'
+        # 例: study -> studies
+        elif lower_word.endswith('y') and len(lower_word) >= 2 and lower_word[-2] not in 'aeiou':
+            return word[:-1] + 'ies'
+        return word + 's'
+        
+    # 未知の接尾辞の場合はハイフンをつけてそのまま結合
+    return word + "-" + form
+
 def load_words(csv_path):
-    words = {'N': [], 'V': [], 'A': [], 'ADV': []}
+    # どんな品詞タグが来ても対応できるように defaultdict を使用
+    words = defaultdict(list)
+    
     if not os.path.exists(csv_path):
         print(f"Warning: {csv_path} not found. Using dummy data.")
-        return {'N': ['system', 'model', 'data'], 'V': ['analyzes', 'processes'], 'A': ['novel', 'robust'], 'ADV': ['rapidly', 'accurately']}
+        return {
+            'N': ['system', 'model', 'data'], 
+            'V': ['analyze', 'process', 'stop', 'apply'], 
+            'A': ['novel', 'robust'], 
+            'ADV': ['rapidly', 'accurately']
+        }
         
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if row['pos'] in words:
+            # words.csv 内に 'pos' キーと 'word' キーがあることを前提
+            if 'pos' in row and 'word' in row:
                 words[row['pos']].append(row['word'])
     return words
 
@@ -1098,11 +1318,27 @@ def generate_sentence(words_dict):
     template = random.choice(TEMPLATES)
     tokens = template.split()
     sentence_tokens = []
+    
     for token in tokens:
+        # 1. 完全に一致する品詞タグ (N, V, A など) の場合
         if token in words_dict and words_dict[token]:
             sentence_tokens.append(random.choice(words_dict[token]))
+            
+        # 2. V-ing や N-s など、ハイフンで活用が指定されている場合
+        elif '-' in token:
+            base_pos, form = token.split('-', 1)
+            # base_pos (例: V) が辞書に存在すれば、その単語を取得して活用させる
+            if base_pos in words_dict and words_dict[base_pos]:
+                base_word = random.choice(words_dict[base_pos])
+                conjugated_word = modify_word(base_word, form)
+                sentence_tokens.append(conjugated_word)
+            else:
+                sentence_tokens.append(token)
+                
+        # 3. それ以外 (The, by, ピリオドなど)
         else:
             sentence_tokens.append(token)
+            
     return sentence_tokens
 
 def generate_subsection_title(words_dict):
@@ -1110,8 +1346,8 @@ def generate_subsection_title(words_dict):
     words.csvの単語を使って、論文らしいサブセクションを生成する
     例: ### Robust Model
     """
-    adj = random.choice(words_dict['A']).capitalize() if words_dict['A'] else "Advanced"
-    noun = random.choice(words_dict['N']).capitalize() if words_dict['N'] else "Method"
+    adj = random.choice(words_dict['A']).capitalize() if 'A' in words_dict and words_dict['A'] else "Advanced"
+    noun = random.choice(words_dict['N']).capitalize() if 'N' in words_dict and words_dict['N'] else "Method"
     return f"### {adj} {noun}"
 
 def main():
@@ -1168,6 +1404,35 @@ def main():
                         bullet_count = random.randint(3, 5)
                         for _ in range(bullet_count):
                             bullet_tokens = generate_sentence(words_dict)
+                            bullet_text = " ".join(bullet_tokens).replace(" ,", ",").replace(" .", ".")
+                            readme_content += f"- {bullet_text.capitalize()}\n"
+                        readme_content += "\n"
+                        
+                    # 20%の確率で「サブセクション」を生やす
+                    elif rand_action < 0.50:
+                        readme_content += f"\n\n{generate_subsection_title(words_dict)}\n\n"
+                        
+                    # それ以外は通常の段落区切り
+                    else:
+                        readme_content += "\n\n"
+        else:
+            # 単語の追加
+            if capitalize_next:
+                readme_content += token.capitalize() + " "
+                capitalize_next = False
+            else:
+                readme_content += token + " "
+                
+    with open(README_FILE, "w", encoding="utf-8") as f:
+        f.write(readme_content)
+        
+    # dataディレクトリがない場合のエラー防止
+    os.makedirs(os.path.dirname(STATE_FILE) or ".", exist_ok=True)
+    with open(STATE_FILE, "w") as f:
+        json.dump(buffer, f)
+
+if __name__ == "__main__":
+    main()
                             bullet_text = " ".join(bullet_tokens).replace(" ,", ",").replace(" .", ".")
                             readme_content += f"- {bullet_text.capitalize()}\n"
                         readme_content += "\n"
