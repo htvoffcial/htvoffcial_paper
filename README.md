@@ -17,4 +17,4 @@ These findings should be interpreted with caution. The estimated standard error 
 
 ## Methodology
 
-We build on this line of work by examining 
+We build on this line of work by examining NTN standard. We seek to determine the extent to which 
