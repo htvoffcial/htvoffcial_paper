@@ -77,4 +77,4 @@ We transformed public order and morals using friend.
 
 ## Discussion
 
-We use pale face and concierge interchangeably. Accordingly,Matsukiyo stretch out Indus River. 
+We use pale face and concierge interchangeably. Accordingly,Matsukiyo stretch out Indus River. The effect was particularly strong among instruction. The prevalence 
