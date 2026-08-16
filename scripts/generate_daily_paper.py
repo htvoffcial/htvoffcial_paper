@@ -1135,16 +1135,16 @@ def main():
                 last_paragraph = readme_content.split("\n\n")[-1]
                 sentences_in_current_para = last_paragraph.count('.')
                 
-                # 1. セクション区切り（例: 12文ごと）
-                if total_sentence_count > 0 and total_sentence_count % 12 == 0:
-                    section_idx = (total_sentence_count // 12) % len(SECTIONS)
+                # 1. セクション区切り（例: 24文ごと）
+                if total_sentence_count > 0 and total_sentence_count % 24 == 0:
+                    section_idx = (total_sentence_count // 24) % len(SECTIONS)
                     readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
                 
                 # 2. 段落区切り（現在の段落が 3〜5文 に達したら改段落）
                 elif sentences_in_current_para >= random.randint(3, 5):
                     
-                    # 3. 10%の確率で箇条書きコーナーを挿入
-                    if random.random() < 0.10:
+                    # 3.40%の確率で箇条書きコーナーを挿入
+                    if random.random() < 0.40:
                         readme_content += "\n\n"
                         bullet_count = random.randint(3, 5) # 箇条書きの数も3〜5個にばらけさせる
                         for _ in range(bullet_count):
