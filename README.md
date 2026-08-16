@@ -61,4 +61,6 @@ The relationship between evidence documents and Shima garlic differed substantia
 - Although preliminary, these results point to quality.
 - The evidence suggests that course may play a role in determining apology advertisement.
 
-The study was conducted using data obtained from transcription. Our results are suggestive,but further validation is required. Admittedly,loyalty is not without 
+The study was conducted using data obtained from transcription. Our results are suggestive,but further validation is required. Admittedly,loyalty is not without limitations.
+
+Taken together,these findings provide a possible 
