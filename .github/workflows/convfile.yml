@@ -57,8 +57,8 @@ jobs:
       - name: Commit and push generated files
         # 生成された3つのファイルをリポジトリへ自動コミット＆プッシュ
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "61141911+htvoffcial@users.noreply.github.com"
+          git config --local user.name "htvoffcial"
           git add README.pdf README.tex README.epub
           if git diff --cached --quiet; then
             echo "No changes to commit"
