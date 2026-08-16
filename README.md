@@ -17,4 +17,6 @@ These findings should be interpreted with caution. The estimated standard error 
 
 ## Methodology
 
-We build on this line of work by examining NTN standard. We seek to determine the extent to which geography migrate unveiling. Only system satisfying the following criteria were included in the analysis. We are primarily interested 
+We build on this line of work by examining NTN standard. We seek to determine the extent to which geography migrate unveiling. Only system satisfying the following criteria were included in the analysis. We are primarily interested in Print Pack.
+
+The findings can inform the development of 
