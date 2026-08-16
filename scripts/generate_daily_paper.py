@@ -1079,12 +1079,7 @@ SECTIONS = [
 ]
 
 # テンプレート例（実際の環境に合わせて調整してください）
-TEMPLATES = [
-    "The A N V ADV .",
-    "A N V the N .",
-    "ADV , the N V .",
-    "This N V that A N is A ."
-]
+
 
 def load_words(csv_path):
     words = {'N': [], 'V': [], 'A': [], 'ADV': []}
