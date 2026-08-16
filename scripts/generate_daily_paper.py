@@ -1433,35 +1433,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-                            bullet_text = " ".join(bullet_tokens).replace(" ,", ",").replace(" .", ".")
-                            readme_content += f"- {bullet_text.capitalize()}\n"
-                        readme_content += "\n"
-                        
-                    # 20%の確率で「サブセクション」を生やす
-                    elif rand_action < 0.50:
-                        readme_content += f"\n\n{generate_subsection_title(words_dict)}\n\n"
-                        
-                    # それ以外は通常の段落区切り
-                    else:
-                        readme_content += "\n\n"
-            else:
-                # コンマなどの後は通常のスペース
-                readme_content += " "
-        else:
-            # 単語の追加
-            if capitalize_next:
-                readme_content += token.capitalize() + " "
-                capitalize_next = False
-            else:
-                readme_content += token + " "
-                
-    with open(README_FILE, "w", encoding="utf-8") as f:
-        f.write(readme_content)
-        
-    # dataディレクトリがない場合のエラー防止
-    os.makedirs(os.path.dirname(STATE_FILE) or ".", exist_ok=True)
-    with open(STATE_FILE, "w") as f:
-        json.dump(buffer, f)
-
-if __name__ == "__main__":
-    main()
