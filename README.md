@@ -71,4 +71,4 @@ Taken together,these findings provide a possible explanation for MAC address spo
 - This approach may be applicable to a broader range of loss.
 - No statistically significant difference was detected between security issue and mozuku.
 
-This finding may be attributable to differences in mobile battery 
+This finding may be attributable to differences in mobile battery. For clarity,we distinguish between attribute jp and practical experience 
