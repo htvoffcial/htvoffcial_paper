@@ -1416,3 +1416,280 @@ often,ADV
 actually,ADV
 sometimes,ADV
 really,ADV
+sensory organ,N
+corneal apex,N
+anterior surface,N
+tunica interna bulbi,N
+posterior surface,N
+retina,N
+corneal epithelium,N
+anterior corneal epithelium,N
+pars caeca retinae,N
+anterior limiting lamina,N
+pars iridica retinae,N
+substantia propria corneae,N
+pars ciliaris retinae,N
+optic nerve,N
+posterior limiting lamina,N
+ora serrata,N
+internal of eyeball,N
+corneal endothelium,N
+posterior corneal epithelium,N
+pars optica retinae,N
+prelaminar part of lamina cribrosa,N
+tunica vasculosa bulbi,N
+uvea,N
+optic disc,N
+optic papilla,N
+intralaminar part,N
+tunica media bulbi,N
+choroid,N
+cup of disc,N
+postlaminar part,N
+suprachoroid lamina,N
+macula lutea,N
+orbital part,N
+lamina vasculosa,N
+fovea centralis,N
+intracanalicular part,N
+optic canal part,N
+vascular lamella,N
+foveola,N
+intracranial part,N
+choriocapillary lamella,N
+pigment layer,N
+external sheath of optic nerve,N
+basal lamina,N
+pigmented epithelium of iris,N
+internal sheath of optic nerve,N
+choroidal vessels,N
+pigmented epithelium of ciliary body,N
+intersheath space,N
+ciliary body,N
+pigmented epithelium of retina,N
+eyeball,N
+anterior pole,N
+corona ciliaris,N
+neural layer,N
+posterior pole,N
+ciliary processes,N
+photoreceptor layer,N
+equator,N
+plicae ciliares,N
+outer limiting membrane,N
+meridian,N
+orbiculus ciliaris,N
+outer granular layer,N
+external axis of eyeball,N
+ciliary muscle,N
+outer plexiform layer,N
+internal axis of eyeball,N
+meridional fibers,N
+bipolar cell layer,N
+visual axis,N
+longitudinal fibers,N
+inner granular layer,N
+anterior segment of eyeball,N
+radial fibers,N
+inner plexiform layer,N
+posterior segment of eyeball,N
+circular fibers,N
+ganglion cell layer,N
+optic vesicle,N
+basal plate,N
+ganglionic layer,N
+optic cup,N
+iris,N
+nerve fiber layer,N
+fibrous tunic of eyeball,N
+pupillary margin,N
+inner limiting membrane,N
+sclera,N
+ciliary margin,N
+retinal vessels,N
+scleral sulcus,N
+anterior surface of iris,N
+central retinal artery,N
+trabecular meshwork,N
+pectinate ligament,N
+posterior surface of iris,N
+vascular circle of optic nerve,N
+corneoscleral junction,N
+major circulus iridis,N
+superolateral artery,N
+uveal part,N
+minor circulus iridis,N
+inferolateral artery,N
+scleral spur,N
+iris folds,N
+superomedial artery,N
+scleral venous sinus,N
+pupil,N
+inferomedial artery,N
+suprachoroid lamina of sclera,N
+stroma of iris,N
+supramacular artery,N
+substantia propria sclerae,N
+sphincter pupillae muscle,N
+inframacular artery,N
+lamina fusca sclerae,N
+dilator pupillae muscle,N
+medial retinal artery,N
+lamina cribrosa sclerae,N
+pigment epithelium of iris,N
+middle macular artery,N
+cornea,N
+pectinate ligament of iridocorneal angle,N
+central retinal vein,N
+conjunctival limbus,N
+trabecular meshwork of iridocorneal angle,N
+superolateral vein,N
+limbus corneae,N
+major arterial circle of iris,N
+inferolateral vein,N
+anterior chamber,N
+aqueous humor,N
+iridocorneal angle,N
+posterior chamber,N
+vitreous body,N
+vitreous artery,N
+vitreous canal,N
+vitreous fossa,N
+vitreous membrane,N
+vitreous stroma,N
+vitreous humor,N
+lens,N
+lens substance,N
+lens cortex,N
+lens nucleus,N
+lens fibers,N
+lens epithelium,N
+lens capsule,N
+anterior pole of lens,N
+posterior pole of lens,N
+anterior surface of lens,N
+posterior surface of lens,N
+lens axis,N
+lens equator,N
+zonular fibers,N
+ciliary zonule,N
+zonular space,N
+extraocular muscle,N
+orbital muscle,N
+superior rectus muscle,N
+inferior rectus muscle,N
+medial rectus muscle,N
+lateral rectus muscle,N
+common tendinous ring,N
+superior oblique muscle,N
+trochlea,N
+tendon sheath of superior oblique,N
+inferior oblique muscle,N
+levator palpebrae superioris muscle,N
+eyelid,N
+upper eyelid,N
+lower eyelid,N
+palpebral fissure,N
+lateral palpebral commissure,N
+medial palpebral commissure,N
+lateral canthus,N
+medial canthus,N
+eyelash,N
+tarsal plate,N
+tarsal gland,N
+conjunctiva,N
+conjunctival fornix,N
+conjunctival sac,N
+lacrimal apparatus,N
+lacrimal gland,N
+excretory duct,N
+lacrimal canaliculus,N
+lacrimal sac,N
+nasolacrimal duct,N
+inner ear,N
+endolymphatic space,N
+endolymph,N
+perilymphatic space,N
+perilymph,N
+membranous labyrinth,N
+vestibular labyrinth,N
+semicircular canal,N
+anterior semicircular canal,N
+posterior semicircular canal,N
+lateral semicircular canal,N
+ampulla,N
+anterior ampulla,N
+posterior ampulla,N
+lateral ampulla,N
+endolymphatic duct,N
+endolymphatic sac,N
+utricle,N
+saccule,N
+macula,N
+macula utriculi,N
+macula sacculi,N
+otolith membrane,N
+otolith,N
+cochlear labyrinth,N
+scala vestibuli,N
+scala tympani,N
+cochlear duct,N
+spiral organ,N
+organ of Corti,N
+basilar membrane,N
+tectorial membrane,N
+spiral ganglion,N
+cochlea,N
+apex of cochlea,N
+base of cochlea,N
+modiolus,N
+osseous spiral lamina,N
+middle ear,N
+tympanic cavity,N
+tympanic membrane,N
+eardrum,N
+malleus,N
+incus,N
+stapes,N
+head of stapes,N
+auditory ossicle,N
+Eustachian tube,N
+auditory tube,N
+external ear,N
+external acoustic meatus,N
+auricle,N
+ear lobe,N
+helix,N
+antihelix,N
+tragus,N
+antitragus,N
+olfactory organ,N
+nasal mucosa,N
+olfactory part,N
+olfactory gland,N
+gustatory organ,N
+taste bud,N
+taste pore,N
+skin,N
+epidermis,N
+horny layer,N
+granular layer,N
+prickle cell layer,N
+basal layer,N
+dermis,N
+papillary layer,N
+reticular layer,N
+subcutaneous tissue,N
+hair,N
+hair follicle,N
+hair papilla,N
+hair shaft,N
+sebaceous gland,N
+sweat gland,N
+nail,N
+nail bed,N
+nail root,N
+mammary gland,N
+nipple,N
+areola,N
+lactiferous duct,N
