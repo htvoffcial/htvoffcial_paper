@@ -19,10 +19,14 @@ jobs:
           COMMIT_SHA="${{ github.sha }}"
           
           # 挿入用のコードスニペット文字列を生成
-          SNIPPET="\`\`\`markdown\n"
+          SNIPPET="**ePub** \`\`\`markdown\n"
           SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.epub\n"
+          SNIPPET="${SNIPPET}\`\`\`"
+          SNIPPET="**PDF** \`\`\`markdown\n"
           SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.pdf\n"
-          SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.md\n"
+          SNIPPET="${SNIPPET}\`\`\`"
+          SNIPPET="**LaTeX** \`\`\`markdown\n"
+          SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.tex\n"
           SNIPPET="${SNIPPET}\`\`\`"
 
           # Pythonスクリプトでマーカー間を置換
