@@ -1,11 +1,7 @@
 name: Update jsDelivr Links in READMIES.md
 
 on:
-  push:
-    branches:
-      - master
-    paths-ignore:
-      - 'READMIES.md' # 無限ループ防止
+  workflow_dispatch:
 
 jobs:
   update-links:
