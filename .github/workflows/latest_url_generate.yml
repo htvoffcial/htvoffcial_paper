@@ -79,4 +79,8 @@ jobs:
           
           git add READMIES.md
           # 変更がある場合のみコミット
-          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: update jsDelivr links [skip ci]" && git push)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "docs: update jsDelivr links [skip ci]"
+            git pull --rebase origin master
+            git push
+          fi
