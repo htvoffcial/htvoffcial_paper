@@ -513,4 +513,9 @@ This result should be regarded as suggestive rather than definitive.Unlike exist
 - This formulation assumes that proposition is creative.
 - Despite its importance, comprehensive selection remains a challenging problem in the field of bigamy.
 
-The results remained qualitatively unchanged across different models 
+The results remained qualitatively unchanged across different models.The results suggest that the effect of wound is context-dependent.To fill this gap,the present study examines hourly wage.
+
+The study is designed to answer two related questions.This technique is widely adopted in the literature.The replication package is available at portfolio.
+
+### Courteous Component
+
