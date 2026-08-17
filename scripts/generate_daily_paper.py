@@ -1359,11 +1359,11 @@ def main():
             buffer = json.load(f)
             
     # 一度に生成する文の量を増やして、内容を素早く濃くする
-    while len(buffer) < 50:
+    while len(buffer) < 2500:
         buffer.extend(generate_sentence(words_dict))
         
-    output_tokens = buffer[:50]
-    buffer = buffer[50:]
+    output_tokens = buffer[:2500]
+    buffer = buffer[2500:]
     
     # READMEを読み込む（なければ新規作成）
     if os.path.exists(README_FILE):
