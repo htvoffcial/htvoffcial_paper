@@ -3,7 +3,7 @@ name: Generate PDF, ePub, LaTeX from README
 on:
   schedule:
     # 毎日UTC 0:00 (日本時間 午前9時) に実行
-    - cron: '0 */4 * * *'
+    - cron: '0 */5 * * *'
   push:
     # どのファイルの更新でもトリガーするが、自動生成されたファイルによる無限ループは防ぐ
     paths-ignore:
