@@ -1,0 +1,56 @@
+name: Update jsDelivr Links in READMIES.md
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'READMIES.md' # 無限ループ防止
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate jsDelivr Links and Update READMIES.md
+        run: |
+          # 最新のコミットIDを取得
+          COMMIT_SHA="${{ github.sha }}"
+          
+          # 挿入用のコードスニペット文字列を生成
+          SNIPPET="\`\`\`markdown\n"
+          SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.epub\n"
+          SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.pdf\n"
+          SNIPPET="${SNIPPET}https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}heads/master/README.md\n"
+          SNIPPET="${SNIPPET}\`\`\`"
+
+          # Pythonスクリプトでマーカー間を置換
+          python3 -c "
+          import re
+
+          snippet = '''$SNIPPET'''
+          with open('READMIES.md', 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          pattern = r'<!-- JSDELIVR_LINKS_START -->.*?<!-- JSDELIVR_LINKS_END -->'
+          replacement = f'<!-- JSDELIVR_LINKS_START -->\n{snippet}\n<!-- JSDELIVR_LINKS_END -->'
+          
+          new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+          with open('READMIES.md', 'w', encoding='utf-8') as f:
+              f.write(new_content)
+          "
+
+      - name: Commit and Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add READMIES.md
+          # 変更がある場合のみコミット
+          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: update jsDelivr links [skip ci]" && git push)
