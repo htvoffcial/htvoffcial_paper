@@ -40,7 +40,12 @@ jobs:
 
           [LaTeX](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}/README.tex)
 
-          
+          **MarkDown**
+          \`\`\`markdown
+          https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}/README.md
+          \`\`\`
+          [MarkDown](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@${COMMIT_SHA}/README.md)
+
           EOF
           )
 
