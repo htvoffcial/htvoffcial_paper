@@ -2,6 +2,7 @@ import csv
 import json
 import random
 import os
+import urllib.parse
 from collections import defaultdict
 # 論文によくある文型テンプレート
 # N: 名詞, V: 動詞, A: 形容詞, ADV: 副詞
@@ -1246,9 +1247,6 @@ SECTIONS = [
     "## Future Work"
 ]
 
-# テンプレート例（実際の環境に合わせて調整してください）
-
-
 
 def modify_word(word, form):
     """
@@ -1374,6 +1372,9 @@ def main():
 
     total_sentence_count = readme_content.count('.')
     capitalize_next = True # 文頭の単語を大文字にするためのフラグ
+    
+    # 【追加】現在進行中の「章のタイトル」を保持。最初は Abstract に設定。
+    current_section_title = "Abstract"
 
     for token in output_tokens:
         if token in [".", ",", ";", ":"]:
@@ -1389,14 +1390,24 @@ def main():
                 last_paragraph = readme_content.split("\n\n")[-1]
                 sentences_in_current_para = last_paragraph.count('.')
                 
-                # 1. 大セクション区切り（24文ごと）
+                # 1. 大セクション区切り
                 if total_sentence_count > 0 and total_sentence_count % 700 == 0:
                     section_idx = (total_sentence_count // 700) % len(SECTIONS)
-                    readme_content += f"\n\n{SECTIONS[section_idx]}\n\n"
+                    section_text = SECTIONS[section_idx]
+                    readme_content += f"\n\n{section_text}\n\n"
+                    
+                    # 【追加】大セクションのタイトルに更新（#や前後の空白を除外）
+                    current_section_title = section_text.replace('#', '').strip()
                 
                 # 2. 段落の区切り（3〜5文に達したらアクションを起こす）
                 elif sentences_in_current_para >= random.randint(3, 5):
                     rand_action = random.random()
+                    
+                    # 【追加】段落の区切りで、5%の確率で画像を挿入する
+                    if random.random() < 0.05:
+                        # スペースなどをURLセーフな形にエンコード
+                        safe_title = urllib.parse.quote(current_section_title)
+                        readme_content += f"![{current_section_title}](https://usercontent.haruharutv.jp/gen/IMG_{safe_title}.png)\n\n"
                     
                     # 9%の確率で「箇条書き」を生成
                     if rand_action < 0.09:
@@ -1410,7 +1421,11 @@ def main():
                         
                     # 20%の確率で「サブセクション」を生やす
                     elif rand_action < 0.50:
-                        readme_content += f"\n\n{generate_subsection_title(words_dict)}\n\n"
+                        subsection_title = generate_subsection_title(words_dict)
+                        readme_content += f"\n\n{subsection_title}\n\n"
+                        
+                        # 【追加】サブセクションが生成されたら、現在の章タイトルを更新する
+                        current_section_title = subsection_title.replace('#', '').strip()
                         
                     # それ以外は通常の段落区切り
                     else:
