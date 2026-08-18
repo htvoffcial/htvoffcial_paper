@@ -4241,3 +4241,133 @@ Myiopsitta luchsi,N
 Forpus xanthopterygius,N
 Nannopsittaca dachilleae,N
 Touit costaricensis,N
+bug bounty,N
+vulnerability disclosure,N
+responsible disclosure,N
+coordinated disclosure,N
+bug bounty program,N
+private program,N
+public program,N
+VDP,N
+vulnerability disclosure program,N
+scope,N
+in-scope,N
+out-of-scope,N
+asset,N
+target,N
+domain,N
+subdomain,N
+wildcard scope,N
+safe harbor,N
+SLA,N
+triage,N
+triager,N
+reproduced,A
+triaged,A
+not applicable,A
+informative,A
+duplicate,N
+resolved,A
+reward,N
+bounty,N
+bounty table,N
+severity,N
+critical,A
+high,A
+medium,A
+low,A
+CVSS,N
+CVSS score,N
+impact,N
+exploitability,N
+PoC,N
+proof of concept,N
+reproduction steps,N
+vulnerability report,N
+writeup,N
+reconnaissance,N
+recon,N
+OSINT,N
+subdomain enumeration,N
+port scanning,N
+directory bruteforcing,N
+fuzzing,N
+parameter tampering,N
+IDOR,N
+insecure direct object reference,N
+XSS,N
+cross-site scripting,N
+stored XSS,N
+reflected XSS,N
+DOM XSS,N
+SQL injection,N
+SQLi,N
+SSRF,N
+server-side request forgery,N
+CSRF,N
+cross-site request forgery,N
+RCE,N
+remote code execution,N
+LFI,N
+local file inclusion,N
+RFI,N
+remote file inclusion,N
+XXE,N
+XML external entity,N
+SSTI,N
+server-side template injection,N
+open redirect,N
+business logic flaw,N
+race condition,N
+information disclosure,N
+privilege escalation,N
+authentication bypass,N
+authorization bypass,N
+account takeover,N
+ATO,N
+session fixation,N
+clickjacking,N
+CORS misconfiguration,N
+subdomain takeover,N
+HTTP request smuggling,N
+prototype pollution,N
+deserialization,N
+insecure deserialization,N
+path traversal,N
+command injection,N
+LDAP injection,N
+NoSQL injection,N
+GraphQL injection,N
+mass assignment,N
+API abuse,N
+rate limiting bypass,N
+hacker,N
+white-hat hacker,N
+researcher,N
+hunter,N
+leaderboard,N
+reputation,N
+signal,N
+impact points,N
+Hall of Fame,N
+HOF,N
+first blood,N
+N-day,N
+zero-day,N
+0-day,N
+CVE,N
+CWE,N
+OWASP,N
+OWASP Top 10,N
+Burp Suite,N
+Burp Collaborator,N
+Nuclei,N
+ffuf,N
+dirsearch,N
+Amass,N
+Subfinder,N
+HackerOne,N
+Bugcrowd,N
+Intigriti,N
+YesWeHack,N
+intigriti,N
