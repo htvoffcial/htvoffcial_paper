@@ -1,0 +1,53 @@
+name: Archive README Files
+
+on:
+  workflow_dispatch: # 手動実行用（必要に応じて push などに変更可能）
+
+jobs:
+  archive-readmes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # リポジトリへの書き込み権限
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find top words and move files
+        run: |
+          # README.md から単語を抽出し、出現頻度上位2つを取得（記号除去・小文字化）
+          TOP_WORDS=$(tr -c '[:alnum:]' '[\n*]' < README.md | tr '[:upper:]' '[:lower:]' | grep -v '^$' | sort | uniq -c | sort -nr | head -n 2 | awk '{print $2}')
+          
+          # 取得した単語を配列に格納
+          WORD1=$(echo "$TOP_WORDS" | sed -n '1p')
+          WORD2=$(echo "$TOP_WORDS" | sed -n '2p')
+          
+          # ディレクトリ名を定義
+          FOLDER_NAME="${WORD1}_${WORD2}"
+          TARGET_DIR="Archive/${FOLDER_NAME}"
+          
+          echo "Target directory: ${TARGET_DIR}"
+          
+          # 保存先フォルダの作成
+          mkdir -p "${TARGET_DIR}"
+          
+          # 存在する対象ファイルのみ移動
+          for ext in md tex pdf epub; do
+            if [ -f "README.${ext}" ]; then
+              mv "README.${ext}" "${TARGET_DIR}/"
+            fi
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Archive/ README.*
+          
+          # 変更がある場合のみコミット
+          if git status --porcelain | grep -q .; then
+            git commit -m "Archive README files to Archive/ directory"
+            git push
+          else
+            echo "No changes to commit"
+          fi
