@@ -1,7 +1,7 @@
 name: Archive README Files
 
 on:
-  workflow_dispatch: # 手動実行用（必要に応じて push などに変更可能）
+  workflow_dispatch: # 手動実行用
 
 jobs:
   archive-readmes:
@@ -22,8 +22,12 @@ jobs:
           WORD1=$(echo "$TOP_WORDS" | sed -n '1p')
           WORD2=$(echo "$TOP_WORDS" | sed -n '2p')
           
-          # ディレクトリ名を定義
-          FOLDER_NAME="${WORD1}_${WORD2}"
+          # 今日の日付を取得（例: 20260818）
+          # ※時刻まで含めて重複を完全に避けたい場合は $(date +'%Y%m%d_%H%M%S') に変更できます
+          DATE_STR=$(date +'%Y%m%d')
+          
+          # ディレクトリ名を定義（例: Archive/word1_word2_20260818）
+          FOLDER_NAME="${WORD1}_${WORD2}_${DATE_STR}"
           TARGET_DIR="Archive/${FOLDER_NAME}"
           
           echo "Target directory: ${TARGET_DIR}"
@@ -46,7 +50,7 @@ jobs:
           
           # 変更がある場合のみコミット
           if git status --porcelain | grep -q .; then
-            git commit -m "Archive README files to Archive/ directory"
+            git commit -m "Archive README files to ${TARGET_DIR}"
             git push
           else
             echo "No changes to commit"
