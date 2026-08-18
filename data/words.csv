@@ -4498,3 +4498,528 @@ JULEBER,N
 metabolism,N
 interaction,N
 enzyme,N
+imbricate slice,N
+imbricate zone,N
+inlet,N
+wake deposit,N
+wedge slide,N
+wedge mantle,N
+wave base,N
+wavelet processing,N
+water column,N
+washover,N
+wash load,N
+feather fracture,N
+inner shelf,N
+uvala,N
+plumose structure,N
+feather structure,N
+hanging-wall drop fault,N
+mica fish,N
+ecostratigraphy,N
+ecostratigraphic unit,N
+ecozone,N
+aseismic front,N
+sensitive clay,N
+quick clay,N
+disjunction,N
+disjunctive fold,N
+fluidized sediment flow,N
+equilibrium structure,N
+pitted pebble,N
+necrology,N
+S-C structure,N
+S-C mylonite,N
+essexite,N
+epimerization,N
+epiclastic,A
+epidiagenesis,N
+episode,N
+epitaxy,N
+epibole,N
+elongate fan,N
+coastal front,N
+circular slip,N
+salt-water wedge,N
+ductile fault,N
+enterolithic fold,N
+cylindrical dike,N
+telethermal deposit,N
+pencil structure,N
+peripheral fault,N
+recumbent fold,N
+fan fold,N
+pollution plume,N
+retarded creep,N
+delayed fracture,N
+slow earthquake,N
+auto-thanatotope,N
+auto-correlation,N
+auto-biotope,N
+autolith,N
+overgrowth,N
+overstep,N
+overstep thrust sequence,N
+overstep thrust,N
+overlap,N
+overlap zone,N
+offscraping,N
+obstacle scour,N
+offset,N
+offlap,N
+aulacogen,N
+olistostrome,N
+olistolith,N
+orthocumulate,N
+orthochronology,N
+orthostratigraphy,N
+orthoconglomerate,N
+aurora,N
+aurorae,N
+oncoid,N
+oncolite,N
+solfataric clay,N
+ontzone,N
+onlap,N
+onlap surface,N
+sill,N
+outer arc high,N
+outer rise,N
+coastal onlap,N
+spur,N
+knoll,N
+sea knoll,N
+furrow,N
+outer arc,N
+outer arc basin,N
+trench outer ridge,N
+trench-slope basin,N
+trench-fill sediment,N
+trench-fill turbidite,N
+trench landward slope,N
+outlier,N
+transgressive systems tract,N
+transgressive sand,N
+transgressive sand sheet,N
+ravinement surface,N
+transgressive surface of erosion,N
+transgressive lag deposit,N
+transgressive conglomerate,N
+ocean current dominated shelf,N
+step fault,N
+bottom simulating reflector,N
+BSR,N
+guide fossil,N
+marine-flooding surface,N
+release joint,N
+oceanic tholeiite,N
+ocean-floor basalt,N
+oceanic island basalt,N
+oceanic island tholeiite,N
+ocean floor metamorphism,N
+ridge metamorphism,N
+oceanic plate stratigraphy,N
+flame structure,N
+flamboyant texture,N
+chemostratigraphy,N
+brecciated structure,N
+breccia pipe,N
+fire flooding,N
+pyroclastic surge,N
+stoss side,N
+volcanic karst,N
+volcanic neck,N
+volcanic pipe,N
+overfold,N
+overkill hypothesis,N
+casuzone,N
+bedform,N
+downlap,N
+downlap surface,N
+active volcano,N
+active margin,N
+active continental margin,N
+active marginal basin,N
+channel-levee complex,N
+downbuckle,N
+flower structure,N
+interbiohorizon zone,N
+en echelon folds,N
+en echelon arrangement,N
+en echelon joints,N
+en echelon fault,N
+left-handed en echelon,A
+apophysis,N
+Holocene,N
+agglutinate,N
+tubular fold,N
+Cambrian explosion,N
+holostratotype,N
+asthenosphere,N
+pseudomatrix,N
+baselap,N
+mud chip,N
+characteristic earthquake,N
+collage,N
+collage tectonics,N
+root structure,N
+melange,N
+competency,N
+competency contrast,N
+competent fold,N
+competent layer,N
+reworking,N
+reactivation surface,N
+refold,N
+seismite,N
+palimpsest sediment,N
+crenulation fold,N
+recurrence interval,N
+parastratigraphic rock unit,N
+operational unit,N
+degradation vacuity,N
+ebb tidal delta,N
+tear fault,N
+surge sediment,N
+sapropel event,N
+sheath fold,N
+dish structure,N
+triangular facet,N
+industrial lithostratigraphic unit,N
+reference section,N
+hypostratotype,N
+oxygen fugacity,N
+sand wave,N
+sand sheet,N
+sand ribbon,N
+lag gravel,N
+cline,N
+gradation zone,N
+chromosome,N
+chronotaxy,N
+chronotaxis,N
+chronomere,N
+chronolith,N
+chron,N
+assemblage zone,N
+system,N
+system-group,N
+consecutive-range zone,N
+morphogenetic zone,N
+phylozone,N
+phylogenetic zone,N
+lineage zone,N
+crystal bomb,N
+crystal lapilli,N
+chemocline,N
+in-situ reworking,N
+actuakism,N
+high-angle fault,N
+high-angle reverse fault,N
+ethnostratigraphy,N
+archaeomagnetism,N
+archaeopedology,N
+flood basalt,N
+component-stratotype,N
+Diluvium,N
+Pleistocene,N
+tectonic erosion,N
+tectonic earthquake,N
+tectonic melange,N
+shear zone melange,N
+tectonic-stratigraphic terrane,N
+tectonic inversion,N
+regressive overlap,N
+retrogradation,N
+retrogressive metamorphism,N
+backset bed,N
+backset bedding,N
+boundstone,N
+suprabulky fold,N
+hinterland-dipping duplex,N
+lectostratotype,N
+lectotype,N
+coquina,N
+causal stratigraphy,N
+coset,N
+intra-arc basin,N
+commet mark,N
+characteristic earthquake model,N
+competent fold,N
+parasequence,N
+sequence,N
+sequence type,N
+sequence boundary,N
+sequence cycle,N
+sequence stratigraphy,N
+earthquake fault,N
+seismic tomography,N
+underclay,N
+sheeting,N
+sheeting joint,N
+insular shelf,N
+giant impact hypothesis,N
+sharpstone conglomerate,N
+fold mullion,N
+stacking record section,N
+gravitational sliding,N
+gravitational sliding tectonics,N
+gravitational detachment fault,N
+gravity fault,N
+pseudotachylite,N
+out-of-sequence thrust,N
+in-sequence thrust,N
+quasi-flexural folding,N
+impact breccia,N
+shock metamorphism,N
+thrust duplex,N
+onlap surface,N
+parasequence,N
+impact crater,N
+collision tectonics,N
+impact basin,N
+impact structure,N
+aggradation,N
+upward thickening sedimentation,N
+upward coarsening sedimentation,N
+jog,N
+siltite,N
+epicenter,N
+abyssal hill,N
+abyssal basalt,N
+abyssal tholeiite,N
+hypocenter,N
+syngenesis,N
+synthetic fault,N
+synthem,N
+syndiagenesis,N
+syntype,N
+syntaxy,N
+syntaxial,A
+extensional tectonics,N
+extensional duplex,N
+tensile bridge,N
+syn-biotope,N
+neostratotype,N
+synrift basin,N
+quench-fragmentation,N
+swaley cross-stratification,N
+suite,N
+stoss side,N
+stratomere,N
+snowball structure,N
+spiral structure,N
+supersome,N
+superplume,N
+span,N
+splay fault,N
+slab,N
+slab slide,N
+slab penetration,N
+slickenline,N
+slicken step,N
+slow earthquake,N
+swash cross-stratification,N
+swash mark,N
+biointerval zone,N
+orthocumulate,N
+bioseries,N
+growth fault,N
+bioclast,N
+biosparite,N
+bioturbation,N
+secule,N
+segment,N
+segregation,N
+sechron,N
+lobe,N
+lobate delta,N
+set,N
+sediment wave,N
+jointed rock mass,N
+cenozonite,N
+cenozone,N
+foredeep,N
+foreland-dipping duplex,N
+snowball earth,N
+total vacuity,N
+total-range zone,N
+tectonic melange,N
+strike-slip duplex,N
+stratigraphic leakage,N
+intrafolial fold,N
+bedding thrust,N
+mortar texture,N
+palm-tree structure,N
+mountain gravels,N
+amalgamated structure,N
+slow earthquake,N
+transpression,N
+strike-slip duplex,N
+transtension,N
+transverse dip,N
+transverse bending,N
+life-zone,N
+line source,N
+lacuna,N
+lag,N
+lag gravel,N
+radiozone,N
+lapout,N
+ravinement surface,N
+ramp,N
+ramp anticline,N
+anteclise,N
+lithizone,N
+rigid plug,N
+listric fault,N
+rhythmite,N
+offlap,N
+lithogenetic unit,N
+lithostrome,N
+lithosome,N
+lithotype,N
+lithodeme,N
+lithodemic unit,N
+lithotope,N
+ridge and runnel,N
+rip-up clast,N
+retrogradation,N
+rift,N
+rifting,N
+ribbon,N
+raised reefal deposits,N
+propylite,N
+rill,N
+reworking,N
+aggradation,N
+progressive pure shear,N
+progressive simple shear,N
+progressive deformation,N
+progressive metamorphism,N
+zoned ultramafic complex,N
+range-overlap zone,N
+lense,N
+lens fold,N
+rollover,N
+rollover anticline,N
+Walther's law,N
+wave base,N
+wave depth,N
+hypabyssal rock,N
+antidune,N
+inversion structure,N
+inversion tectonics,N
+hummocky cross-stratification,N
+non-Andersonian fault,N
+noncylindrical fold,N
+biotope,N
+piggyback thrust sequence,N
+piggyback thrusts,N
+nonsystematic joint,N
+informal lithostratigraphic unit,N
+microfacies,N
+nontectonic joint,N
+anorogenic andesite,N
+torsion joint,N
+beach ridge,N
+faunule,N
+phase,N
+format,N
+accretionary tectonics,N
+accretionary prism,N
+accretionary wedge,N
+enriched mantle,N
+imbricate structure,N
+imbrication,N
+imbricate slice,N
+imbricate stack,N
+imbricate zone,N
+imbricated thrusts,N
+imbricate fan,N
+composite fold,N
+mixed topostratic unit,N
+composite-stratotype,N
+parastratotype,N
+puddingstone,N
+Bouma sequence,N
+fuel-coolant interaction,N
+partial-range zone,N
+blind fold,N
+blind thrust,N
+fractal,N
+flood zone,N
+flower structure,N
+framboidal structure,N
+pull-apart structure,N
+pull-apart basin,N
+plume tectonics,N
+flake tectonics,N
+flaser bedding,N
+flame structure,N
+pressure shadow,N
+floor thrust,N
+prostratigraphy,N
+prostratic unit,N
+block fold,N
+block folding,N
+block slide,N
+reflecting-block fold,N
+reflecting-block folding,N
+propylite,N
+florule,N
+plane fold,N
+baselap,N
+heteradcumulate,N
+bed forms,N
+hemera,N
+helicitic structure,N
+herringbone structure,N
+herringbone cross lamina,N
+propylite,N
+Vendobionta,N
+expansion fold,N
+expansion folding,N
+homotaxy,N
+ball-and-pillow structure,N
+ball-and-flow structure,N
+bornhardt,N
+holostratic unit,N
+holostrome,N
+holozonite,N
+holosome,N
+holozone,N
+mica fish,N
+mitre fold,N
+magnafacies,N
+mud drape,N
+miosynthem,N
+barren interzone,N
+barren intrazone,N
+barren interval,N
+barren zone,N
+megakink,N
+megakink fold,N
+megasequence,N
+supersequence,N
+megagroup,N
+megaturbidite,N
+megabed,N
+megaplume,N
+megaripple,N
+measures,N
+mesuniscus structure,N
+mesothem,N
+melange,N
+merostratic unit,N
+merozonite,N
+merozone,N
+monothem,N
+monomict,A
+moment,N
+mortar texture,N
+palm-tree structure,N
+mountain gravels,N
+amalgamated structure,N
+transpression,N
+transtension,N
