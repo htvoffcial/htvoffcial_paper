@@ -1360,7 +1360,7 @@ def main():
     while len(buffer) < 90:
         buffer.extend(generate_sentence(words_dict))
         
-    output_tokens = buffer:90]
+    output_tokens = buffer[:90]
     buffer = buffer[90:]
     
     # READMEを読み込む（なければ新規作成）
