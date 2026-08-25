@@ -37,7 +37,16 @@ TEMPLATES = [
     "The remainder of this N is organized as follows .",
     "This N contributes to the existing literature on N by V N .",
     "We argue that A N highlights the need for A N .",
-
+    
+  "This work was supported by JSPS KAKENHI Grant Number JX0000001.",
+  "This material is based upon work supported by the National Science Foundation under Grant No. 8N210012.",
+  "Research reported in this publication was supported by the National Institutes of Health under award number C0212120012.",
+  "Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – Project number 66B1002.",
+  "This work was supported by UK Research and Innovation [grant number AX/00012221/P].",
+  "This work was supported by the French National Research Agency (ANR) under the Generic Call for Proposals (AAPG) (ANN-20-8101).",
+  "This work was supported by the National Natural Science Foundation of China (Grant No. 4N68910).",
+  "This work was supported by the National Research Foundation of Korea (NRF) grant funded by the Korea government (MSIT) (No. 4X21021).",
+  "We acknowledge the support of the Natural Sciences and Engineering Research Council of Canada (NSERC).",
     # --- 追加: 手法 ---
     "The N was V to measure the A N .",
     "N were randomly V from A N .",
