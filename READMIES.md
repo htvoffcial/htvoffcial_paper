@@ -1,28 +1,28 @@
 <!-- JSDELIVR_LINKS_START -->
 **ePub**
 ```markdown
-https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.epub
+https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.epub
 ```
 
-[ePub](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.epub)
+[ePub](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.epub)
 
 **PDF**
 ```markdown
-https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.pdf
+https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.pdf
 ```
 
-[PDF](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.pdf)
+[PDF](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.pdf)
 
 **LaTeX**
 ```markdown
-https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.tex
+https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.tex
 ```
 
-[LaTeX](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.tex)
+[LaTeX](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.tex)
 
 **MarkDown**
 ```markdown
-https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.md
+https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.md
 ```
-[MarkDown](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@2d1ee54c6924f4c9c87240818d71819bb8531f1b/README.md)
+[MarkDown](https://cdn.jsdelivr.net/gh/htvoffcial/htvoffcial_paper@bc1ff3223843562fc680318412a44681c4a44e59/README.md)
 <!-- JSDELIVR_LINKS_END -->
