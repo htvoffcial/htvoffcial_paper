@@ -90,8 +90,6 @@ jobs:
           # LRCファイルのメタデータタグ
           lrc_entries.append(f"[ti:{song_title}]")
           lrc_entries.append(f"[ar:{lyricist_name}]")
-          lrc_entries.append(f"[al:Random English Lyrics]")
-          lrc_entries.append(f"[by:GitHub Actions]")
 
           current_time = 3.0 # 開始3秒（秒数）
 
