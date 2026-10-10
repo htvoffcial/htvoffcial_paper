@@ -52,7 +52,7 @@ jobs:
           def get_random_word(pos):
               return random.choice(words_by_pos[pos])
 
-          # 2. 曲名と作詞者名の生成
+          # 2. 曲名と作詞者名の生成（作詞者名は words.csv の名詞を組み合わせて自動生成）
           title_templates = [
               "Echoes of {N}",
               "The {A} {N}",
@@ -66,8 +66,8 @@ jobs:
               ADV=get_random_word('ADV')
           )
 
-          lyricists = ["Alex Mercer", "Sam Taylor", "Jordan Lee", "Morgan Vance", "Taylor Smith", "Casey Jordan"]
-          lyricist_name = random.choice(lyricists)
+          # words.csv の単語から作詞者名（アーティスト名風）を生成
+          lyricist_name = f"{get_random_word('N').capitalize()} {get_random_word('N').capitalize()}"
 
           # 3. 歌詞テンプレートの定義（洋楽の歌詞っぽい構造）
           templates = [
@@ -141,17 +141,17 @@ jobs:
           with open(lrc_path, 'w', encoding='utf-8') as f:
               f.write("\n".join(lrc_entries))
 
-          # 6. 最新のDDEX規格 (ERN 4.3) に沿ったXMLの生成（配信地域を日本「JP」に変更）
+          # 6. 最新のDDEX規格 (ERN 4.3) に沿ったXMLの生成（指定の PartyId と日本「JP」限定設定）
           current_iso_time = datetime.now().isoformat()
           ddex_xml_content = f"""<?xml version="1.0" encoding="UTF-8"?>
           <ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
             <MessageHeader>
               <MessageId>MSG-{base_filename}</MessageId>
               <MessageSender>
-                <PartyId>PADPIDA2022050211U</PartyId>
+                <PartyId>PADPIDA07829919997X</PartyId>
               </MessageSender>
               <MessageRecipient>
-                <PartyId>DSP_PARTNER_ID</PartyId>
+                <PartyId>KweiYametMusic</PartyId>
               </MessageRecipient>
               <MessageCreatedDateTime>{current_iso_time}</MessageCreatedDateTime>
             </MessageHeader>
@@ -212,4 +212,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add lyrics/
-          git diff --quiet && git diff --cached --quiet || (git commit -m "Add newly generated lyrics, lrc and JP-only DDEX ERN 4.3 XML files" && git push)
+          git diff --quiet && git diff --cached --quiet || (git commit -m "Add newly generated lyrics, lrc and customized DDEX ERN 4.3 XML files" && git push)
