@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
+  <MessageHeader>
+    <MessageId>MSG-song_20261010_104836</MessageId>
+    <MessageSender>
+      <PartyId>PADPIDA2022050211U</PartyId>
+    </MessageSender>
+    <MessageRecipient>
+      <PartyId>DSP_PARTNER_ID</PartyId>
+    </MessageRecipient>
+    <MessageCreatedDateTime>2026-10-10T10:48:36.412425</MessageCreatedDateTime>
+  </MessageHeader>
+  <ResourceList>
+    <SoundRecording>
+      <SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+      <ResourceReference>A1</ResourceReference>
+      <SoundRecordingDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>The bloody tetrodotoxin</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Sam Taylor</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+        <Contributor>
+          <PartyName>
+            <FullName>Sam Taylor</FullName>
+          </PartyName>
+          <Role>Lyricist</Role>
+        </Contributor>
+      </SoundRecordingDetailsByTerritory>
+    </SoundRecording>
+  </ResourceList>
+  <ReleaseList>
+    <Release>
+      <ReleaseReference>R1</ReleaseReference>
+      <ReleaseType>Album</ReleaseType>
+      <ReleaseDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>The bloody tetrodotoxin</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Sam Taylor</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+      </ReleaseDetailsByTerritory>
+    </Release>
+  </ReleaseList>
+</ern:NewReleaseMessage>
