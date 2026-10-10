@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
+  <MessageHeader>
+    <MessageId>MSG-song_20261010_115041</MessageId>
+    <MessageSender>
+      <PartyId>PADPIDA07829919997X</PartyId>
+      <PartyName>
+          <FullName>Decline Music LLC. Pte. Co.,Ltd.S.p.A SAS</FullName>
+      </PartyName>
+    </MessageSender>
+    <MessageRecipient>
+      <PartyId>PADPIDA20829900121X</PartyId>
+      <PartyName>
+          <FullName>KweiYametMusic</FullName>
+      </PartyName>
+    </MessageRecipient>
+    <MessageCreatedDateTime>2026-10-10T11:50:41.025794</MessageCreatedDateTime>
+  </MessageHeader>
+  <ResourceList>
+    <SoundRecording>
+      <SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+      <ResourceReference>A1</ResourceReference>
+      <SoundRecordingEdition>
+          <PLine>
+             <Year>2026</Year>
+             <PLineText>2026 Decline Music LLC. Pte. Co.,Ltd.S.p.A SAS</PLineText>
+          </PLine>
+      </SoundRecordingEdition>
+      <SoundRecordingDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>apply foring in the LEO satellite</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Ome Kisarazu</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+        <Contributor>
+          <PartyName>
+            <FullName>Ome Kisarazu</FullName>
+          </PartyName>
+          <Role>Lyricist</Role>
+        </Contributor>
+      </SoundRecordingDetailsByTerritory>
+    </SoundRecording>
+  </ResourceList>
+  <ReleaseList>
+    <Release>
+      <ReleaseReference>R1</ReleaseReference>
+      <ReleaseType>Album</ReleaseType>
+      <ReleaseDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>apply foring in the LEO satellite</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Ome Kisarazu</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+      </ReleaseDetailsByTerritory>
+    </Release>
+  </ReleaseList>
+</ern:NewReleaseMessage>
