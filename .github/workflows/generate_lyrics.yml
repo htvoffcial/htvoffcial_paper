@@ -105,7 +105,7 @@ jobs:
           
           os.makedirs('lyrics', exist_ok=True)
           
-          txt_path = f"lyrics/{base_filename} N ADV.txt"
+          txt_path = f"lyrics/{base_filename}.txt"
           lrc_path = f"lyrics/{base_filename}.lrc"
 
           # プレーンテキスト（歌詞）の保存
