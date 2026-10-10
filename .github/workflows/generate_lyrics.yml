@@ -1,0 +1,127 @@
+name: Generate Random English Lyrics & LRC
+
+on:
+  workflow_dispatch: # 手動実行
+  # 定期実行したい場合はスケジュールのコメントアウトを外してください
+  # schedule:
+  #   - cron: '0 0 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate Lyrics and LRC
+        run: |
+          python3 - << 'EOF'
+          import csv
+          import random
+          import os
+          from datetime import datetime
+
+          # 1. データの読み込み
+          csv_file = '/data/words.csv'
+          # ※もしリポジトリ内の相対パスにある場合は 'data/words.csv' に変更してください
+          if not os.path.exists(csv_file):
+              csv_file = 'data/words.csv'
+
+          words_by_pos = {'N': [], 'V': [], 'A': [], 'ADV': []}
+
+          with open(csv_file, mode='r', encoding='utf-8') as f:
+              reader = csv.DictReader(f)
+              for row in reader:
+                  word = row.get('word', '').strip()
+                  pos = row.get('pos', '').strip().upper()
+                  if word and pos in words_by_pos:
+                      words_by_pos[pos].append(word)
+
+          # フォールバック（データが足りない場合用）
+          for pos in words_by_pos:
+              if not words_by_pos[pos]:
+                  words_by_pos[pos] = ['unknown']
+
+          def get_random_word(pos):
+              return random.choice(words_by_pos[pos])
+
+          # 2. 歌詞テンプレートの定義（洋楽の歌詞っぽい構造）
+          templates = [
+              "When the {N} falls down {ADV},\nWe {V} the {A} {N}.",
+              "In the core of the {A} {N},\nWe {ADV} {V} the {N}.",
+              "Every {A} {N} will {V},\nAs the {N} {ADV} {V}s.",
+              "Can we {V} the {A} {N}?\nSo {ADV} {A}, so {N}."
+          ]
+
+          # 3. 曲の構成（セクション）をランダムに組み立てて歌詞を作成
+          num_sections = random.randint(3, 5)
+          lyrics_lines = []
+          lrc_entries = []
+          
+          current_time = 3.0 # 開始1秒（秒数）
+
+          for i in range(num_sections):
+              section_title = f"[Verse {i+1}]" if i < num_sections - 1 else "[Outro]"
+              lyrics_lines.append(section_title)
+              
+              # 各セクション2〜4行
+              for _ in range(random.randint(2, 4)):
+                  template = random.choice(templates)
+                  # テンプレート内のプレースホルダーをランダムな単語に置換
+                  line = template.format(
+                      N=get_random_word('N'),
+                      V=get_random_word('V'),
+                      A=get_random_word('A'),
+                      ADV=get_random_word('ADV')
+                  )
+                  
+                  # 改行が含まれる場合は行ごとにLRCのタイムスタンプを割り振る
+                  sub_lines = line.split('\n')
+                  for sub in sub_lines:
+                      lyrics_lines.append(sub)
+                      
+                      # mm:ss.xx 形式のタイムスタンプ生成
+                      mm = int(current_time // 60)
+                      ss = int(current_time % 60)
+                      xx = int((current_time % 1) * 100)
+                      timestamp = f"[{mm:02d}:{ss:02d}.{xx:02d}]"
+                      lrc_entries.append(f"{timestamp}{sub}")
+                      
+                      current_time += random.uniform(2.5, 4.5) # 次の歌詞までの間隔をランダムに追加
+              
+              lyrics_lines.append("") # セクション間の空行
+
+          # 4. ファイル名の決定（日付やタイムスタンプを利用してユニークに）
+          timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+          base_filename = f"song_{timestamp_str}"
+          
+          os.makedirs('lyrics', exist_ok=True)
+          
+          txt_path = f"lyrics/{base_filename} N ADV.txt"
+          lrc_path = f"lyrics/{base_filename}.lrc"
+
+          # プレーンテキスト（歌詞）の保存
+          with open(txt_path, 'w', encoding='utf-8') as f:
+              f.write("\n".join(lyrics_lines))
+
+          # LRCファイルの保存
+          with open(lrc_path, 'w', encoding='utf-8') as f:
+              f.write("\n".join(lrc_entries))
+
+          print(f"Generated: {txt_path} and {lrc_path}")
+          EOF
+
+      - name: Commit and Push generated files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add lyrics/
+          git diff --quiet && git diff --cached --quiet || (git commit -m "Add newly generated lyrics and lrc files" && git push)
