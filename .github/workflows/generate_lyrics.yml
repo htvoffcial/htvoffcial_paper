@@ -147,9 +147,15 @@ jobs:
               <MessageId>MSG-{base_filename}</MessageId>
               <MessageSender>
                 <PartyId>PADPIDA07829919997X</PartyId>
+                <PartyName>
+                    <FullName>Decline Music LLC. Pte. Co.,Ltd.S.p.A SAS</FullName>
+                </PartyName>
               </MessageSender>
               <MessageRecipient>
-                <PartyId>KweiYametMusic</PartyId>
+                <PartyId>PADPIDA20829900121X</PartyId>
+                <PartyName>
+                    <FullName>KweiYametMusic</FullName>
+                </PartyName>
               </MessageRecipient>
               <MessageCreatedDateTime>{current_iso_time}</MessageCreatedDateTime>
             </MessageHeader>
@@ -157,6 +163,12 @@ jobs:
               <SoundRecording>
                 <SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
                 <ResourceReference>A1</ResourceReference>
+                <SoundRecordingEdition>
+                    <PLine>
+                       <Year>2026</Year>
+                       <PLineText>2026 Decline Music LLC. Pte. Co.,Ltd.S.p.A SAS</PLineText>
+                  </PLine>
+                </SoundRecordingEdition>
                 <SoundRecordingDetailsByTerritory>
                   <TerritoryCode>JP</TerritoryCode>
                   <Title>
