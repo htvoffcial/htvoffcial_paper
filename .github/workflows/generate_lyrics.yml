@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Generate Lyrics and LRC
+      - name: Generate Lyrics, LRC and DDEX XML
         run: |
           python3 - << 'EOF'
           import csv
@@ -31,7 +31,6 @@ jobs:
 
           # 1. データの読み込み
           csv_file = '/data/words.csv'
-          # ※もしリポジトリ内の相対パスにある場合は 'data/words.csv' に変更してください
           if not os.path.exists(csv_file):
               csv_file = 'data/words.csv'
 
@@ -53,7 +52,24 @@ jobs:
           def get_random_word(pos):
               return random.choice(words_by_pos[pos])
 
-          # 2. 歌詞テンプレートの定義（洋楽の歌詞っぽい構造）
+          # 2. 曲名と作詞者名の生成
+          title_templates = [
+              "Echoes of {N}",
+              "The {A} {N}",
+              "{V}ing in the {N}",
+              "Beyond the {A} {N}"
+          ]
+          song_title = title_templates[random.randint(0, len(title_templates)-1)].format(
+              N=get_random_word('N'),
+              V=get_random_word('V'),
+              A=get_random_word('A'),
+              ADV=get_random_word('ADV')
+          )
+
+          lyricists = ["Alex Mercer", "Sam Taylor", "Jordan Lee", "Morgan Vance", "Taylor Smith", "Casey Jordan"]
+          lyricist_name = random.choice(lyricists)
+
+          # 3. 歌詞テンプレートの定義（洋楽の歌詞っぽい構造）
           templates = [
               "When the {N} falls down {ADV},\nWe {V} the {A} {N}.",
               "In the core of the {A} {N},\nWe {ADV} {V} the {N}.",
@@ -61,12 +77,23 @@ jobs:
               "Can we {V} the {A} {N}?\nSo {ADV} {A}, so {N}."
           ]
 
-          # 3. 曲の構成（セクション）をランダムに組み立てて歌詞を作成
+          # 4. 曲の構成（セクション）をランダムに組み立てて歌詞を作成
           num_sections = random.randint(3, 5)
           lyrics_lines = []
           lrc_entries = []
           
-          current_time = 3.0 # 開始1秒（秒数）
+          # プレーンテキストの冒頭にメタデータを記載
+          lyrics_lines.append(f"Title: {song_title}")
+          lyrics_lines.append(f"Lyricist: {lyricist_name}")
+          lyrics_lines.append("")
+
+          # LRCファイルのメタデータタグ
+          lrc_entries.append(f"[ti:{song_title}]")
+          lrc_entries.append(f"[ar:{lyricist_name}]")
+          lrc_entries.append(f"[al:Random English Lyrics]")
+          lrc_entries.append(f"[by:GitHub Actions]")
+
+          current_time = 3.0 # 開始3秒（秒数）
 
           for i in range(num_sections):
               section_title = f"[Verse {i+1}]" if i < num_sections - 1 else "[Outro]"
@@ -75,7 +102,6 @@ jobs:
               # 各セクション2〜4行
               for _ in range(random.randint(2, 4)):
                   template = random.choice(templates)
-                  # テンプレート内のプレースホルダーをランダムな単語に置換
                   line = template.format(
                       N=get_random_word('N'),
                       V=get_random_word('V'),
@@ -83,23 +109,21 @@ jobs:
                       ADV=get_random_word('ADV')
                   )
                   
-                  # 改行が含まれる場合は行ごとにLRCのタイムスタンプを割り振る
                   sub_lines = line.split('\n')
                   for sub in sub_lines:
                       lyrics_lines.append(sub)
                       
-                      # mm:ss.xx 形式のタイムスタンプ生成
                       mm = int(current_time // 60)
                       ss = int(current_time % 60)
                       xx = int((current_time % 1) * 100)
                       timestamp = f"[{mm:02d}:{ss:02d}.{xx:02d}]"
                       lrc_entries.append(f"{timestamp}{sub}")
                       
-                      current_time += random.uniform(2.5, 4.5) # 次の歌詞までの間隔をランダムに追加
+                      current_time += random.uniform(2.5, 4.5)
               
-              lyrics_lines.append("") # セクション間の空行
+              lyrics_lines.append("")
 
-          # 4. ファイル名の決定（日付やタイムスタンプを利用してユニークに）
+          # 5. ファイル名の決定
           timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
           base_filename = f"song_{timestamp_str}"
           
@@ -107,6 +131,7 @@ jobs:
           
           txt_path = f"lyrics/{base_filename}.txt"
           lrc_path = f"lyrics/{base_filename}.lrc"
+          ddex_path = f"lyrics/ddex_{base_filename}.xml"
 
           # プレーンテキスト（歌詞）の保存
           with open(txt_path, 'w', encoding='utf-8') as f:
@@ -116,7 +141,70 @@ jobs:
           with open(lrc_path, 'w', encoding='utf-8') as f:
               f.write("\n".join(lrc_entries))
 
-          print(f"Generated: {txt_path} and {lrc_path}")
+          # 6. 最新のDDEX規格 (ERN 4.3) に沿ったXMLの生成（配信地域を日本「JP」に変更）
+          current_iso_time = datetime.now().isoformat()
+          ddex_xml_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+          <ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
+            <MessageHeader>
+              <MessageId>MSG-{base_filename}</MessageId>
+              <MessageSender>
+                <PartyId>PADPIDA2022050211U</PartyId>
+              </MessageSender>
+              <MessageRecipient>
+                <PartyId>DSP_PARTNER_ID</PartyId>
+              </MessageRecipient>
+              <MessageCreatedDateTime>{current_iso_time}</MessageCreatedDateTime>
+            </MessageHeader>
+            <ResourceList>
+              <SoundRecording>
+                <SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+                <ResourceReference>A1</ResourceReference>
+                <SoundRecordingDetailsByTerritory>
+                  <TerritoryCode>JP</TerritoryCode>
+                  <Title>
+                    <TitleText>{song_title}</TitleText>
+                  </Title>
+                  <DisplayArtist>
+                    <PartyName>
+                      <FullName>{lyricist_name}</FullName>
+                    </PartyName>
+                    <ArtistRole>MainArtist</ArtistRole>
+                  </DisplayArtist>
+                  <Contributor>
+                    <PartyName>
+                      <FullName>{lyricist_name}</FullName>
+                    </PartyName>
+                    <Role>Lyricist</Role>
+                  </Contributor>
+                </SoundRecordingDetailsByTerritory>
+              </SoundRecording>
+            </ResourceList>
+            <ReleaseList>
+              <Release>
+                <ReleaseReference>R1</ReleaseReference>
+                <ReleaseType>Album</ReleaseType>
+                <ReleaseDetailsByTerritory>
+                  <TerritoryCode>JP</TerritoryCode>
+                  <Title>
+                    <TitleText>{song_title}</TitleText>
+                  </Title>
+                  <DisplayArtist>
+                    <PartyName>
+                      <FullName>{lyricist_name}</FullName>
+                    </PartyName>
+                    <ArtistRole>MainArtist</ArtistRole>
+                  </DisplayArtist>
+                </ReleaseDetailsByTerritory>
+              </Release>
+            </ReleaseList>
+          </ern:NewReleaseMessage>
+          """
+
+          # XMLファイルの保存
+          with open(ddex_path, 'w', encoding='utf-8') as f:
+              f.write(ddex_xml_content.strip())
+
+          print(f"Generated: {txt_path}, {lrc_path} and {ddex_path}")
           EOF
 
       - name: Commit and Push generated files
@@ -124,4 +212,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add lyrics/
-          git diff --quiet && git diff --cached --quiet || (git commit -m "Add newly generated lyrics and lrc files" && git push)
+          git diff --quiet && git diff --cached --quiet || (git commit -m "Add newly generated lyrics, lrc and JP-only DDEX ERN 4.3 XML files" && git push)
