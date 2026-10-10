@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
+  <MessageHeader>
+    <MessageId>MSG-song_20261010_105818</MessageId>
+    <MessageSender>
+      <PartyId>PADPIDA07829919997X</PartyId>
+    </MessageSender>
+    <MessageRecipient>
+      <PartyId>KweiYametMusic</PartyId>
+    </MessageRecipient>
+    <MessageCreatedDateTime>2026-10-10T10:58:18.747683</MessageCreatedDateTime>
+  </MessageHeader>
+  <ResourceList>
+    <SoundRecording>
+      <SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+      <ResourceReference>A1</ResourceReference>
+      <SoundRecordingDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>Echoes of transformer</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Pars iridica retinae Menstrual disorder treatment</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+        <Contributor>
+          <PartyName>
+            <FullName>Pars iridica retinae Menstrual disorder treatment</FullName>
+          </PartyName>
+          <Role>Lyricist</Role>
+        </Contributor>
+      </SoundRecordingDetailsByTerritory>
+    </SoundRecording>
+  </ResourceList>
+  <ReleaseList>
+    <Release>
+      <ReleaseReference>R1</ReleaseReference>
+      <ReleaseType>Album</ReleaseType>
+      <ReleaseDetailsByTerritory>
+        <TerritoryCode>JP</TerritoryCode>
+        <Title>
+          <TitleText>Echoes of transformer</TitleText>
+        </Title>
+        <DisplayArtist>
+          <PartyName>
+            <FullName>Pars iridica retinae Menstrual disorder treatment</FullName>
+          </PartyName>
+          <ArtistRole>MainArtist</ArtistRole>
+        </DisplayArtist>
+      </ReleaseDetailsByTerritory>
+    </Release>
+  </ReleaseList>
+</ern:NewReleaseMessage>
