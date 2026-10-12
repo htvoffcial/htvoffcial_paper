@@ -29,20 +29,21 @@ jobs:
           import os
           from datetime import datetime
 
-          # 1. データの読み込み
+          # 1. データの読み込み (words.csv)
           csv_file = '/data/words.csv'
           if not os.path.exists(csv_file):
               csv_file = 'data/words.csv'
 
           words_by_pos = {'N': [], 'V': [], 'A': [], 'ADV': []}
 
-          with open(csv_file, mode='r', encoding='utf-8') as f:
-              reader = csv.DictReader(f)
-              for row in reader:
-                  word = row.get('word', '').strip()
-                  pos = row.get('pos', '').strip().upper()
-                  if word and pos in words_by_pos:
-                      words_by_pos[pos].append(word)
+          if os.path.exists(csv_file):
+              with open(csv_file, mode='r', encoding='utf-8') as f:
+                  reader = csv.DictReader(f)
+                  for row in reader:
+                      word = row.get('word', '').strip()
+                      pos = row.get('pos', '').strip().upper()
+                      if word and pos in words_by_pos:
+                          words_by_pos[pos].append(word)
 
           # フォールバック（データが足りない場合用）
           for pos in words_by_pos:
@@ -52,52 +53,70 @@ jobs:
           def get_random_word(pos):
               return random.choice(words_by_pos[pos])
 
-          # 2. 曲名と作詞者名の生成（作詞者名は words.csv の名詞を組み合わせて自動生成）
-          title_templates = [
-              "Echoes of {N}",
-              "The {A} {N}",
-              "{V}ing in the {N}",
-              "Beyond the {A} {N}"
-          ]
-          song_title = title_templates[random.randint(0, len(title_templates)-1)].format(
+          # 1.5 テンプレートの読み込み (ltempl.csv)
+          templ_file = '/data/ltempl.csv'
+          if not os.path.exists(templ_file):
+              templ_file = 'data/ltempl.csv'
+
+          title_templates = []
+          templates = []
+
+          if os.path.exists(templ_file):
+              with open(templ_file, mode='r', encoding='utf-8') as f:
+                  reader = csv.DictReader(f)
+                  for row in reader:
+                      t_type = row.get('type', '').strip().lower()
+                      t_text = row.get('template', '').strip().replace('\\n', '\n')
+                      if t_type == 'title' and t_text:
+                          title_templates.append(t_text)
+                      elif t_type == 'lyric' and t_text:
+                          templates.append(t_text)
+
+          # フォールバック（テンプレートファイルが見つからない・空の場合）
+          if not title_templates:
+              title_templates = [
+                  "Echoes of {N}",
+                  "The {A} {N}",
+                  "{V}ing in the {N}",
+                  "Beyond the {A} {N}"
+              ]
+          
+          if not templates:
+              templates = [
+                  "When the {N} falls down {ADV},\nWe {V} the {A} {N}.",
+                  "In the core of the {A} {N},\nWe {ADV} {V} the {N}.",
+                  "Every {A} {N} will {V},\nAs the {N} {ADV} {V}s.",
+                  "Can we {V} the {A} {N}?\nSo {ADV} {A}, so {N}."
+              ]
+
+          # 2. 曲名と作詞者名の生成
+          song_title = random.choice(title_templates).format(
               N=get_random_word('N'),
               V=get_random_word('V'),
               A=get_random_word('A'),
               ADV=get_random_word('ADV')
           )
 
-          # words.csv の単語から作詞者名（アーティスト名風）を生成
           lyricist_name = f"{get_random_word('N').capitalize()} {get_random_word('N').capitalize()}"
 
-          # 3. 歌詞テンプレートの定義（洋楽の歌詞っぽい構造）
-          templates = [
-              "When the {N} falls down {ADV},\nWe {V} the {A} {N}.",
-              "In the core of the {A} {N},\nWe {ADV} {V} the {N}.",
-              "Every {A} {N} will {V},\nAs the {N} {ADV} {V}s.",
-              "Can we {V} the {A} {N}?\nSo {ADV} {A}, so {N}."
-          ]
-
-          # 4. 曲の構成（セクション）をランダムに組み立てて歌詞を作成
+          # 3. 曲の構成（セクション）をランダムに組み立てて歌詞を作成
           num_sections = random.randint(3, 5)
           lyrics_lines = []
           lrc_entries = []
           
-          # プレーンテキストの冒頭にメタデータを記載
           lyrics_lines.append(f"Title: {song_title}")
           lyrics_lines.append(f"Lyricist: {lyricist_name}")
           lyrics_lines.append("")
 
-          # LRCファイルのメタデータタグ
           lrc_entries.append(f"[ti:{song_title}]")
           lrc_entries.append(f"[ar:{lyricist_name}]")
 
-          current_time = 3.0 # 開始3秒（秒数）
+          current_time = 3.0
 
           for i in range(num_sections):
               section_title = f"[Verse {i+1}]" if i < num_sections - 1 else "[Outro]"
               lyrics_lines.append(section_title)
               
-              # 各セクション2〜4行
               for _ in range(random.randint(2, 4)):
                   template = random.choice(templates)
                   line = template.format(
@@ -121,7 +140,7 @@ jobs:
               
               lyrics_lines.append("")
 
-          # 5. ファイル名の決定
+          # 4. ファイル名の決定と保存
           timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
           base_filename = f"song_{timestamp_str}"
           
@@ -131,15 +150,13 @@ jobs:
           lrc_path = f"lyrics/{base_filename}.lrc"
           ddex_path = f"lyrics/ddex_{base_filename}.xml"
 
-          # プレーンテキスト（歌詞）の保存
           with open(txt_path, 'w', encoding='utf-8') as f:
               f.write("\n".join(lyrics_lines))
 
-          # LRCファイルの保存
           with open(lrc_path, 'w', encoding='utf-8') as f:
               f.write("\n".join(lrc_entries))
 
-          # 6. 最新のDDEX規格 (ERN 4.3) に沿ったXMLの生成（指定の PartyId と日本「JP」限定設定）
+          # DDEX XMLの生成
           current_iso_time = datetime.now().isoformat()
           ddex_xml_content = f"""<?xml version="1.0" encoding="UTF-8"?>
           <ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43" xmlns:xs="http://www.w3.org/2001/XMLSchema" MessageSchemaVersionId="ern/43" LanguageAndScriptCode="en">
@@ -210,7 +227,6 @@ jobs:
           </ern:NewReleaseMessage>
           """
 
-          # XMLファイルの保存
           with open(ddex_path, 'w', encoding='utf-8') as f:
               f.write(ddex_xml_content.strip())
 
